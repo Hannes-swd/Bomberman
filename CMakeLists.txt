@@ -12,7 +12,13 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(raylib)
 
-add_executable(MyProgram src/main.cpp)
+# ALLE .cpp Dateien hier auflisten
+add_executable(MyProgram 
+    src/main.cpp
+    src/map.cpp
+    src/globals.cpp
+    src/player.cpp
+)
 
 target_link_libraries(MyProgram PRIVATE raylib)
 target_include_directories(MyProgram PRIVATE ${raylib_SOURCE_DIR}/src)

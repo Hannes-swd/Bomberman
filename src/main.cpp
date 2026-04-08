@@ -1,4 +1,6 @@
 #include "raylib.h"
+#include "globals.h"
+#include "map.h"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -14,6 +16,9 @@ int main(void)
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
+    
+    Curent_map_Size = map_Small;  // Aktuelle Map auswählen
+    InitMap();
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -27,10 +32,9 @@ int main(void)
         //----------------------------------------------------------------------------------
         BeginDrawing();
 
-            ClearBackground(ORANGE);
-
-            DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-
+            ClearBackground(WHITE);
+            DrawMap();
+            DrawText("Bomberman Game", 10, 10, 20, WHITE);
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
