@@ -12,4 +12,8 @@ class Player {
         Player(int x, int y);
 
         void setBomb();
+        void moveUp();
+        void moveDown();
+        void moveLeft();
+        void moveRight();
 };
