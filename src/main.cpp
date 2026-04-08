@@ -17,7 +17,7 @@ int main(void)
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
     
-    Curent_map_Size = map_Small;  // Aktuelle Map auswählen
+    Curent_map_Size = map_Small;
     InitMap();
 
     // Main game loop
