@@ -1,5 +1,14 @@
 #pragma once
 #include "raylib.h"
+#include <vector>
 
-void DrawMap();
+struct MapData {
+    std::vector<std::vector<int>> data;
+    int width;
+    int height;
+};
+
+extern MapData currentMap;
+
 void InitMap();
+void DrawMap();

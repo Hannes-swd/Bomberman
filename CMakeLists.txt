@@ -18,6 +18,7 @@ add_executable(MyProgram
     src/map.cpp
     src/globals.cpp
     src/player.cpp
+    src/bomb.cpp
 )
 
 target_link_libraries(MyProgram PRIVATE raylib)
