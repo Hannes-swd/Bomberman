@@ -1,12 +1,13 @@
 #include "player.h" // include playerclass from player.h
 #include "raylib.h"
+#include "bomb.h"
 
 Player::Player(int x, int y) : HP(10), speed(0), positionX(x), positionY(y) {} // define player
 
 // functions
 // set bomb
 void Player::setBomb() {
-    Bomb bomb(positionX, positionY);
+    placeBomb(positionX, positionY);
 }
 
 // move up
