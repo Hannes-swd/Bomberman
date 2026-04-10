@@ -19,6 +19,7 @@ add_executable(MyProgram
     src/globals.cpp
     src/player.cpp
     src/bomb.cpp
+    src/cam.cpp
 )
 
 target_link_libraries(MyProgram PRIVATE raylib)

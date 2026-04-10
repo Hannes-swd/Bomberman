@@ -2,7 +2,7 @@
 #include "globals.h"
 #include "map.h"
 #include "player.h"
-
+#include "cam.h"
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
@@ -18,10 +18,12 @@ int main(void)
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
     
-    Curent_map_Size = map_Small;
+    Curent_map_Size = map_Big;
     InitMap();
     Player player1(10, 10);
     Player player2(500, 500);
+
+    managecam();
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -30,10 +32,12 @@ int main(void)
         //----------------------------------------------------------------------------------
         // TODO: Update your variables here
         //----------------------------------------------------------------------------------
-
+        
         // Draw
         //----------------------------------------------------------------------------------
         BeginDrawing();
+
+            beginCamera();
 
             ClearBackground(WHITE);
             DrawMap();
@@ -74,6 +78,7 @@ int main(void)
             if(IsKeyPressed(KEY_RIGHT_SHIFT)){
                 player2.setBomb();
             }
+            endCamera();
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
