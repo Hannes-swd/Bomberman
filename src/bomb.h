@@ -1,12 +1,15 @@
 #pragma once
+#include <iostream>
+#include <vector>
 
-class Bomb {
-    // private variables
-    private:
-        int positionX;
-        int positionY;
+// define functions & struct
+void placeBomb(int x, int y);
+void drawBomb();
 
-    // constructor
-    public:
-        Bomb(int x, int y);
-};  
+struct Bomb {
+    int posX;
+    int posY;
+};
+
+// define list
+extern std::vector<Bomb> BombList;

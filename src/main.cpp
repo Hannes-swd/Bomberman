@@ -37,6 +37,9 @@ int main(void)
 
             ClearBackground(WHITE);
             DrawMap();
+
+            drawBomb();
+
             player1.drawPlayer(RED);
             player2.drawPlayer(BLUE);
 
@@ -64,6 +67,13 @@ int main(void)
             
             if(IsKeyDown(KEY_RIGHT))
                 player2.moveRight();
+
+            if(IsKeyPressed(KEY_TAB))
+                player1.setBomb();
+
+            if(IsKeyPressed(KEY_RIGHT_SHIFT)){
+                player2.setBomb();
+            }
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
