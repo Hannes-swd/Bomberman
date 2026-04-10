@@ -1,5 +1,6 @@
 #pragma once
 #include "bomb.h"
+#include <raylib.h>
 
 class Player {
     private:
@@ -12,6 +13,7 @@ class Player {
         Player(int x, int y);
 
         void setBomb();
+        void drawPlayer(Color color);
         void moveUp();
         void moveDown();
         void moveLeft();
