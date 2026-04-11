@@ -44,7 +44,11 @@ void InitMap() {
                 currentMap.data[y][x] = TILE_BEDROCK;
             }
             else {
-                currentMap.data[y][x] = TILE_WALL;
+                if (GetRandomValue(0, 99) < 50) {
+                    currentMap.data[y][x] = TILE_WALL;
+                } else {
+                    currentMap.data[y][x] = TILE_FLOOR;
+                }
             }
         }
     }
