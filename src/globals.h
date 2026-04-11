@@ -8,3 +8,5 @@ enum map_size {
     map_Big
 };
 extern map_size Curent_map_Size;
+
+extern int width, height;
