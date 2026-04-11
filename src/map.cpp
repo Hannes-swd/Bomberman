@@ -16,16 +16,16 @@ void InitMap() {
     
     switch (Curent_map_Size) {
         case map_Small:
-            width = 14;
-            height = 7;
+            width = 13;
+            height = 6;
             break;
         case map_Medium:
-            width = 30;
-            height = 15;
+            width = 29;
+            height = 14;
             break;
         case map_Big:
-            width = 40;
-            height = 20;
+            width = 39;
+            height = 21;
             break;
     }
     
@@ -41,13 +41,15 @@ void InitMap() {
                 currentMap.data[y][x] = TILE_BEDROCK;
             }
             else if (x % 2 == 0 && y % 2 == 0) {
-                currentMap.data[y][x] = TILE_WALL;
+                currentMap.data[y][x] = TILE_BEDROCK;
             }
             else {
-                currentMap.data[y][x] = TILE_FLOOR;
+                currentMap.data[y][x] = TILE_WALL;
             }
         }
     }
+    currentMap.data[1][1] = TILE_FLOOR;                           // Spieler 1 Start
+    currentMap.data[height-2][width-2] = TILE_FLOOR; 
 }
 
 void DrawMap() {
@@ -60,6 +62,9 @@ void DrawMap() {
             }
             else if (currentMap.data[y][x] == TILE_BEDROCK) {
                 DrawRectangle(x * blockSize, y * blockSize, blockSize, blockSize, DARKGRAY);
+            }
+            else {
+                DrawRectangle(x * blockSize, y * blockSize, blockSize, blockSize, GREEN);
             }
             // TILE_FLOOR wird nicht gezeichnet (transparent/weiß)
         }

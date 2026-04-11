@@ -8,6 +8,7 @@ class Player {
         int speed;
         int positionX;
         int positionY;
+        int playerid;
 
     public:
         Player(int x, int y);
@@ -18,4 +19,5 @@ class Player {
         void moveDown();
         void moveLeft();
         void moveRight();
+        void setplayer(int x , int y);
 };

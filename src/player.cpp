@@ -33,3 +33,7 @@ void Player::moveRight() {
 void Player::drawPlayer(Color color) {
     DrawCircle(positionX, positionY, 10, color);
 }
+
+void setplayer(int x , int y) {
+
+}
