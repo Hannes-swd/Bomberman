@@ -20,8 +20,8 @@ int main(void)
     
     Curent_map_Size = map_Big;
     InitMap();
-    Player player1(10, 10);
-    Player player2(500, 500);
+    Player player1(1, 1);
+    Player player2(width * 32, height * 32);
 
     managecam();
 
@@ -42,6 +42,7 @@ int main(void)
             ClearBackground(WHITE);
             DrawMap();
 
+            deleteBomb();
             drawBomb();
 
             player1.drawPlayer(RED);
