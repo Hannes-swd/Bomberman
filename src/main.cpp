@@ -13,7 +13,9 @@ int main(void)
     const int screenWidth = 800;
     const int screenHeight = 450;
 
+    
     InitWindow(screenWidth, screenHeight, "Bomberman - raylib");
+    SetWindowState(FLAG_WINDOW_RESIZABLE);
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
@@ -22,6 +24,9 @@ int main(void)
     InitMap();
     Player player1(1, 1);
     Player player2(width * 32, height * 32);
+
+    int lastWidth = GetScreenWidth();
+    int lastHeight = GetScreenHeight();
 
     managecam();
 
@@ -32,7 +37,14 @@ int main(void)
         //----------------------------------------------------------------------------------
         // TODO: Update your variables here
         //----------------------------------------------------------------------------------
+        int currentWidth = GetScreenWidth();
+        int currentHeight = GetScreenHeight();
         
+        if (currentWidth != lastWidth || currentHeight != lastHeight) {
+            managecam();  // Kamera neu berechnen
+            lastWidth = currentWidth;
+            lastHeight = currentHeight;
+        }
         // Draw
         //----------------------------------------------------------------------------------
         BeginDrawing();
