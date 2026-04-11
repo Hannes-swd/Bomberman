@@ -5,7 +5,6 @@
 MapData currentMap;
 
 void InitMap() {
-    int width, height;
     
     switch (Curent_map_Size) {
         case map_Small:
