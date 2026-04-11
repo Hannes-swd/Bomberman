@@ -22,8 +22,8 @@ int main(void)
     
     Curent_map_Size = map_Big;
     InitMap();
-    Player player1(1, 1);
-    Player player2(width * 32, height * 32);
+    Player player1(1 * 32 + 16, 1 * 32 + 16);
+    Player player2((width-2) * 32 + 16, (height-2) * 32 + 16);
 
     int lastWidth = GetScreenWidth();
     int lastHeight = GetScreenHeight();

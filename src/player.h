@@ -19,5 +19,5 @@ class Player {
         void moveDown();
         void moveLeft();
         void moveRight();
-        void setplayer(int x , int y);
+        void setplayer(int x, int y);
 };
