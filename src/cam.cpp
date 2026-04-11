@@ -10,8 +10,8 @@ void managecam() {
     float mapWidth = (float)(currentMap.width * blockSize);
     float mapHeight = (float)(currentMap.height * blockSize);
     
-    int screenWidth = GetScreenWidth();
-    int screenHeight = GetScreenHeight();
+    int screenWidth = GetScreenWidth(); 
+    int screenHeight = GetScreenHeight(); 
     
     float zoomX = (float)screenWidth / mapWidth;
     float zoomY = (float)screenHeight / mapHeight;

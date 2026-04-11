@@ -6,6 +6,7 @@
     - 0 = floor (laufbar)
     - 1 = Wall (zerstörbar)
     - 2 = Bedrock (nicht zerstörbar)
+    - 3 = Bomb
 */
 
 MapData currentMap;
