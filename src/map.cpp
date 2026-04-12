@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "globals.h"
 #include "map.h"
+#include "textures.h"
 
 /*
     - 0 = floor (laufbar)
@@ -61,11 +62,15 @@ void DrawMap() {
     
     for (int y = 0; y < currentMap.height; y++) {
         for (int x = 0; x < currentMap.width; x++) {
+
             if (currentMap.data[y][x] == TILE_WALL) {
                 DrawRectangle(x * blockSize, y * blockSize, blockSize, blockSize, BROWN);
             }
             else if (currentMap.data[y][x] == TILE_BEDROCK) {
-                DrawRectangle(x * blockSize, y * blockSize, blockSize, blockSize, DARKGRAY);
+                float scale = 32.0f / textures["bedrock"].width;
+                float drawX = (float)x * blockSize;
+                float drawY = (float)y * blockSize;
+                DrawTextureEx(textures["bedrock"], { drawX, drawY }, 0, scale, WHITE);
             }
             else {
                 DrawRectangle(x * blockSize, y * blockSize, blockSize, blockSize, GREEN);
