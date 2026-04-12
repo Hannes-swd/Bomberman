@@ -20,6 +20,7 @@ add_executable(MyProgram
     src/player.cpp
     src/bomb.cpp
     src/cam.cpp
+    src/Ui.cpp
 )
 
 target_link_libraries(MyProgram PRIVATE raylib)
