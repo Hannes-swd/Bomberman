@@ -41,3 +41,37 @@ void Player::setplayer(int x, int y) {
 int Player::getPlayerLive() const {
     return HP;
 }
+
+void playermoovment(Player& player1, Player& player2) {
+    if(IsKeyDown(KEY_W))
+                player1.moveUp();
+            
+            if(IsKeyDown(KEY_S))
+                player1.moveDown();
+
+            if(IsKeyDown(KEY_A))
+                player1.moveLeft();
+            
+            if(IsKeyDown(KEY_D))
+                player1.moveRight();
+
+
+            if(IsKeyDown(KEY_UP))
+                player2.moveUp();
+            
+            if(IsKeyDown(KEY_DOWN))
+                player2.moveDown();
+
+            if(IsKeyDown(KEY_LEFT))
+                player2.moveLeft();
+            
+            if(IsKeyDown(KEY_RIGHT))
+                player2.moveRight();
+
+            if(IsKeyPressed(KEY_TAB))
+                player1.setBomb();
+
+            if(IsKeyPressed(KEY_RIGHT_SHIFT)){
+                player2.setBomb();
+            }
+}

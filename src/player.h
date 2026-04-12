@@ -22,3 +22,4 @@ class Player {
         void setplayer(int x, int y);
         int getPlayerLive() const;
 };
+void playermoovment(Player& player1, Player& player2);
