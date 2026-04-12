@@ -1,6 +1,7 @@
 #include "player.h" // include playerclass from player.h
 #include "raylib.h"
 #include "bomb.h"
+#include "player.h"
 #include "textures.h"
 
 Player::Player(int x, int y) : HP(10), speed(0), positionX(x), positionY(y) {} // define player
@@ -31,8 +32,17 @@ void Player::moveRight() {
     positionX += 10;
 }
 
-void Player::drawPlayer(Color color) {
-    DrawTexture(textures["player"], positionX, positionY, WHITE);
+void Player::drawPlayer(PlayerType type) {
+    if (type == PLAYER_ONE)
+    {
+        float scale = 32.0f / textures["player1"].width;
+        DrawTextureEx(textures["player1"], { (float)positionX, (float)positionY }, 0, scale, WHITE);
+    }
+    if (type == PLAYER_TWO)
+    {
+        float scale = 32.0f / textures["player2"].width;
+        DrawTextureEx(textures["player2"], { (float)positionX, (float)positionY }, 0, scale, WHITE);
+    }
 }
 
 void Player::setplayer(int x, int y) {
