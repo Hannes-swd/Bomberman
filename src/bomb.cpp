@@ -5,9 +5,13 @@
 // function to add bomb element
 void placeBomb(int x, int y) {
     Bomb newBomb;
+    int GridX = (int)(x / 32);
+    int GridY = (int)(y / 32);
 
-    newBomb.posX = (int)(x / 32) * 32;
-    newBomb.posY = (int)(y / 32) * 32;
+    if (currentMap.data[GridY][GridX] != TILE_FLOOR) return;
+
+    newBomb.posX = GridX * 32;
+    newBomb.posY = GridY * 32;
     newBomb.spawnTime = GetTime();
 
     BombList.push_back(newBomb);
