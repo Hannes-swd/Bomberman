@@ -33,15 +33,17 @@ void Player::moveRight() {
 }
 
 void Player::drawPlayer(PlayerType type) {
-    if (type == PLAYER_ONE)
-    {
+    if (type == PLAYER_ONE) {
         float scale = 32.0f / textures["player1"].width;
-        DrawTextureEx(textures["player1"], { (float)positionX, (float)positionY }, 0, scale, WHITE);
+        float drawX = (float)positionX - (textures["player1"].width * scale) / 2.0f;
+        float drawY = (float)positionY - (textures["player1"].height * scale) / 2.0f;
+        DrawTextureEx(textures["player1"], { drawX, drawY }, 0, scale, WHITE);
     }
-    if (type == PLAYER_TWO)
-    {
+    if (type == PLAYER_TWO) {
         float scale = 32.0f / textures["player2"].width;
-        DrawTextureEx(textures["player2"], { (float)positionX, (float)positionY }, 0, scale, WHITE);
+        float drawX = (float)positionX - (textures["player2"].width * scale) / 2.0f;
+        float drawY = (float)positionY - (textures["player2"].height * scale) / 2.0f;
+        DrawTextureEx(textures["player2"], { drawX, drawY }, 0, scale, WHITE);
     }
 }
 
@@ -55,34 +57,34 @@ int Player::getPlayerLive() const {
 
 void playermoovment(Player& player1, Player& player2) {
     if(IsKeyDown(KEY_W))
-                player1.moveUp();
-            
-            if(IsKeyDown(KEY_S))
-                player1.moveDown();
+        player1.moveUp();
 
-            if(IsKeyDown(KEY_A))
-                player1.moveLeft();
-            
-            if(IsKeyDown(KEY_D))
-                player1.moveRight();
+    if (IsKeyDown(KEY_S))
+        player1.moveDown();
 
+    if (IsKeyDown(KEY_A))
+        player1.moveLeft();
 
-            if(IsKeyDown(KEY_UP))
-                player2.moveUp();
-            
-            if(IsKeyDown(KEY_DOWN))
-                player2.moveDown();
+    if (IsKeyDown(KEY_D))
+        player1.moveRight();
 
-            if(IsKeyDown(KEY_LEFT))
-                player2.moveLeft();
-            
-            if(IsKeyDown(KEY_RIGHT))
-                player2.moveRight();
+    if (IsKeyDown(KEY_UP))
+        player2.moveUp();
 
-            if(IsKeyPressed(KEY_TAB))
-                player1.setBomb();
+    if (IsKeyDown(KEY_DOWN))
+        player2.moveDown();
 
-            if(IsKeyPressed(KEY_RIGHT_SHIFT)){
-                player2.setBomb();
-            }
+    if (IsKeyDown(KEY_LEFT))
+        player2.moveLeft();
+
+    if (IsKeyDown(KEY_RIGHT))
+        player2.moveRight();
+
+    if (IsKeyPressed(KEY_TAB))
+        player1.setBomb();
+
+    if (IsKeyPressed(KEY_RIGHT_SHIFT))
+    {
+        player2.setBomb();
+    }
 }
