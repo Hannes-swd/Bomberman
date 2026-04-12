@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include "map.h"
 
 // define functions & struct
 void placeBomb(int x, int y);
