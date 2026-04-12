@@ -6,8 +6,8 @@
 void placeBomb(int x, int y) {
     Bomb newBomb;
 
-    newBomb.posX = x;
-    newBomb.posY = y;
+    newBomb.posX = (int)(x / 32) * 32;
+    newBomb.posY = (int)(y / 32) * 32;
     newBomb.spawnTime = GetTime();
 
     BombList.push_back(newBomb);
@@ -16,7 +16,7 @@ void placeBomb(int x, int y) {
 // function to draw bombs
 void drawBomb() {
     for (const auto& Bomb : BombList) {
-        DrawCircle(Bomb.posX,Bomb.posY , 15, BLACK);
+        DrawCircle(Bomb.posX + 16,Bomb.posY + 16 , 15, BLACK);
     }
 }
 
