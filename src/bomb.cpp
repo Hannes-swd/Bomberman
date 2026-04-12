@@ -1,6 +1,7 @@
 #include "bomb.h" // include class from bom.h
 #include <raylib.h>
 #include <iostream>
+#include "textures.h"
 
 // function to add bomb element
 void placeBomb(int x, int y) {
@@ -20,7 +21,10 @@ void placeBomb(int x, int y) {
 // function to draw bombs
 void drawBomb() {
     for (const auto& Bomb : BombList) {
-        DrawCircle(Bomb.posX + 16,Bomb.posY + 16 , 15, BLACK);
+        float scale = 32.0f / textures["bomb"].width;
+        float drawX = (float)Bomb.posX - (textures["bomb"].width * scale) / 2.0f;
+        float drawY = (float)Bomb.posY - (textures["bomb"].height * scale) / 2.0f;
+        DrawTextureEx(textures["bomb"], { drawX + 16, drawY + 16 }, 0, scale, WHITE);
     }
 }
 
