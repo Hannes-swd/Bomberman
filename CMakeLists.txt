@@ -37,6 +37,9 @@ add_custom_command(TARGET MyProgram POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory
         $<TARGET_FILE_DIR:MyProgram>/img
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${CMAKE_SOURCE_DIR}/src/img/player.png
-        $<TARGET_FILE_DIR:MyProgram>/img/player.png
+        ${CMAKE_SOURCE_DIR}/src/img/player1.png
+        $<TARGET_FILE_DIR:MyProgram>/img/player1.png
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_SOURCE_DIR}/src/img/player2.png
+        $<TARGET_FILE_DIR:MyProgram>/img/player2.png
 )

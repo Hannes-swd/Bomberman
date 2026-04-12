@@ -62,8 +62,8 @@ int main(void)
             deleteBomb();
             drawBomb();
 
-            player1.drawPlayer(RED);
-            player2.drawPlayer(BLUE);
+            player1.drawPlayer(PLAYER_ONE);
+            player2.drawPlayer(PLAYER_TWO);
 
             playermoovment(player1, player2);
             

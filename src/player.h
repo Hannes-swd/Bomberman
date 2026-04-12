@@ -2,6 +2,11 @@
 #include "bomb.h"
 #include <raylib.h>
 
+enum PlayerType {
+    PLAYER_ONE,
+    PLAYER_TWO
+};
+
 class Player {
     private:
         int HP;
@@ -14,7 +19,7 @@ class Player {
         Player(int x, int y);
 
         void setBomb();
-        void drawPlayer(Color color);
+        void drawPlayer(PlayerType type); 
         void moveUp();
         void moveDown();
         void moveLeft();
