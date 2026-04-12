@@ -4,6 +4,7 @@
 #include "player.h"
 #include "cam.h"
 #include "Ui.h"
+#include "textures.h"
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
@@ -21,6 +22,9 @@ int main(void)
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
     
+
+    loadTextures();
+
     Curent_map_Size = map_Big;
     InitMap();
     Player player1(1 * 32 + 16, 1 * 32 + 16);
@@ -68,7 +72,7 @@ int main(void)
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
-
+    unloadTextures();
     // De-Initialization
     //--------------------------------------------------------------------------------------
     CloseWindow();        // Close window and OpenGL context

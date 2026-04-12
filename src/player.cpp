@@ -1,6 +1,7 @@
 #include "player.h" // include playerclass from player.h
 #include "raylib.h"
 #include "bomb.h"
+#include "textures.h"
 
 Player::Player(int x, int y) : HP(10), speed(0), positionX(x), positionY(y) {} // define player
 
@@ -31,7 +32,7 @@ void Player::moveRight() {
 }
 
 void Player::drawPlayer(Color color) {
-    DrawCircle(positionX, positionY, 10, color);
+    DrawTexture(textures["player"], positionX, positionY, WHITE);
 }
 
 void Player::setplayer(int x, int y) {

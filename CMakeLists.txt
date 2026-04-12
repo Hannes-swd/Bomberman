@@ -21,7 +21,22 @@ add_executable(MyProgram
     src/bomb.cpp
     src/cam.cpp
     src/Ui.cpp
+    src/textures.cpp
 )
 
 target_link_libraries(MyProgram PRIVATE raylib)
 target_include_directories(MyProgram PRIVATE ${raylib_SOURCE_DIR}/src)
+
+# Arbeitsverzeichnis auf Projektroot setzen (funktioniert in VS/VS Code)
+set_target_properties(MyProgram PROPERTIES
+    VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+)
+
+# Assets automatisch in den Build-Ordner kopieren
+add_custom_command(TARGET MyProgram POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory
+        $<TARGET_FILE_DIR:MyProgram>/img
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_SOURCE_DIR}/src/img/player.png
+        $<TARGET_FILE_DIR:MyProgram>/img/player.png
+)
