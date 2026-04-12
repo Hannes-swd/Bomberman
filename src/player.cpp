@@ -38,3 +38,6 @@ void Player::setplayer(int x, int y) {
     positionX = x;
     positionY = y;
 }
+int Player::getPlayerLive() const {
+    return HP;
+}

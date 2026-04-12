@@ -20,4 +20,5 @@ class Player {
         void moveLeft();
         void moveRight();
         void setplayer(int x, int y);
+        int getPlayerLive() const;
 };
