@@ -26,13 +26,13 @@ int main(void)
     loadTextures();
 
     Curent_map_Size = map_Medium;
-    InitMap();
+    
     Player player1(1 * 32 + 16, 1 * 32 + 16);
     Player player2((width-2) * 32 + 16, (height-2) * 32 + 16);
 
     int lastWidth = GetScreenWidth();
     int lastHeight = GetScreenHeight();
-
+    InitMap();
     managecam();
 
     // Main game loop
@@ -44,6 +44,24 @@ int main(void)
         //----------------------------------------------------------------------------------
         int currentWidth = GetScreenWidth();
         int currentHeight = GetScreenHeight();
+
+        if (IsKeyPressed(KEY_V)) {
+            if (Curent_map_Size == map_Medium)
+                Curent_map_Size = map_Big;
+            else if (Curent_map_Size == map_Big)
+                Curent_map_Size = map_Small;
+            else if (Curent_map_Size == map_Small)
+                Curent_map_Size = map_Medium;
+            
+            InitMap();
+            
+            player1.setplayer(1 * 32 + 16, 1 * 32 + 16);
+            player2.setplayer((currentMap.width-2) * 32 + 16, (currentMap.height-2) * 32 + 16);
+            
+            BombList.clear();
+            
+            managecam();
+        }
         
         if (currentWidth != lastWidth || currentHeight != lastHeight) {
             managecam();  // Kamera neu berechnen

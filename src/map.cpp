@@ -18,11 +18,11 @@ void InitMap() {
     switch (Curent_map_Size) {
         case map_Small:
             width = 13;
-            height = 6;
+            height = 7;
             break;
         case map_Medium:
             width = 29;
-            height = 14;
+            height = 15;
             break;
         case map_Big:
             width = 39;
