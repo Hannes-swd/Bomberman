@@ -62,22 +62,24 @@ void DrawMap() {
     
     for (int y = 0; y < currentMap.height; y++) {
         for (int x = 0; x < currentMap.width; x++) {
-
+            Rectangle destRect = { 
+                (float)(x * blockSize), 
+                (float)(y * blockSize), 
+                (float)blockSize, 
+                (float)blockSize 
+            };
+            
             if (currentMap.data[y][x] == TILE_WALL) {
-                float scale = 32.0f / textures["stone"].width;
-                float drawX = (float)x * blockSize;
-                float drawY = (float)y * blockSize;
-                DrawTextureEx(textures["stone"], { drawX, drawY }, 0, scale, WHITE);            }
+                Rectangle srcRect = { 0, 0, (float)textures["stone"].width, (float)textures["stone"].height };
+                DrawTexturePro(textures["stone"], srcRect, destRect, {0, 0}, 0, WHITE);
+            }
             else if (currentMap.data[y][x] == TILE_BEDROCK) {
-                float scale = 32.0f / textures["bedrock"].width;
-                float drawX = (float)x * blockSize;
-                float drawY = (float)y * blockSize;
-                DrawTextureEx(textures["bedrock"], { drawX, drawY }, 0, scale, WHITE);
+                Rectangle srcRect = { 0, 0, (float)textures["bedrock"].width, (float)textures["bedrock"].height };
+                DrawTexturePro(textures["bedrock"], srcRect, destRect, {0, 0}, 0, WHITE);
             }
             else {
-                DrawRectangle(x * blockSize, y * blockSize, blockSize, blockSize, GREEN);
+                DrawRectangle(x * blockSize, y * blockSize, blockSize, blockSize, DARKGREEN);
             }
-            // TILE_FLOOR wird nicht gezeichnet (transparent/weiß)
         }
     }
 }
