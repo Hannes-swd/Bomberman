@@ -64,8 +64,10 @@ void DrawMap() {
         for (int x = 0; x < currentMap.width; x++) {
 
             if (currentMap.data[y][x] == TILE_WALL) {
-                DrawRectangle(x * blockSize, y * blockSize, blockSize, blockSize, BROWN);
-            }
+                float scale = 32.0f / textures["stone"].width;
+                float drawX = (float)x * blockSize;
+                float drawY = (float)y * blockSize;
+                DrawTextureEx(textures["stone"], { drawX, drawY }, 0, scale, WHITE);            }
             else if (currentMap.data[y][x] == TILE_BEDROCK) {
                 float scale = 32.0f / textures["bedrock"].width;
                 float drawX = (float)x * blockSize;

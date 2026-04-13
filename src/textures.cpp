@@ -8,6 +8,7 @@ void loadTextures() {
     textures["player2"] = LoadTexture("img/player2.png");
     textures["bomb"] = LoadTexture("img/bomb.png");
     textures["bedrock"] = LoadTexture("img/bedrock.png");
+    textures["stone"] = LoadTexture("img/stone.png");
     //fehlerüberprüffung
     for (auto& pair : textures) {
         if (pair.second.id == 0) {
