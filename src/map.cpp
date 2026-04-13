@@ -53,8 +53,15 @@ void InitMap() {
             }
         }
     }
-    currentMap.data[1][1] = TILE_FLOOR;                           // Spieler 1 Start
+    //oben links
+    currentMap.data[1][1] = TILE_FLOOR;    
+    currentMap.data[1][2] = TILE_FLOOR; 
+    currentMap.data[2][1] = TILE_FLOOR;     
+    
+    //unten rechts
     currentMap.data[height-2][width-2] = TILE_FLOOR; 
+    currentMap.data[height-3][width-2] = TILE_FLOOR; 
+    currentMap.data[height-2][width-3] = TILE_FLOOR; 
 }
 
 void DrawMap() {
