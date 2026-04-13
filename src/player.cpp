@@ -4,10 +4,8 @@
 #include "player.h"
 #include "textures.h"
 
-Player::Player(int x, int y) : HP(10), speed(0), positionX(x), positionY(y), bombSetter(0) {} // define player
+Player::Player(int x, int y) : HP(10), speed(0), positionX(x), positionY(y), bombSetter(0), bombRange(1) {}
 
-// functions
-// set bomb
 void Player::setBomb() {
     if (bombSetter != 0) {
         if (GetTime() - bombSetter >= 5.0){
@@ -16,7 +14,7 @@ void Player::setBomb() {
         return;
     }
 
-    placeBomb(positionX, positionY);
+    placeBomb(positionX, positionY, bombRange);
     bombSetter = GetTime();
 }
 

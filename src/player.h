@@ -15,6 +15,7 @@ class Player {
         int positionY;
         int playerid;
         double bombSetter;
+        int bombRange;
 
     public:
         Player(int x, int y);
@@ -28,5 +29,6 @@ class Player {
         bool checkGround(double x, double y);
         void setplayer(int x, int y);
         int getPlayerLive() const;
+        int getBombRange() const { return bombRange; }
 };
 void playermoovment(Player& player1, Player& player2);
