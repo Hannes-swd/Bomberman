@@ -26,13 +26,13 @@ int main(void)
     loadTextures();
 
     Curent_map_Size = map_Medium;
-    
+    InitMap();
     Player player1(1 * 32 + 16, 1 * 32 + 16);
     Player player2((width-2) * 32 + 16, (height-2) * 32 + 16);
 
     int lastWidth = GetScreenWidth();
     int lastHeight = GetScreenHeight();
-    InitMap();
+    
     managecam();
 
     // Main game loop
