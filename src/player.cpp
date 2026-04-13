@@ -4,32 +4,42 @@
 #include "player.h"
 #include "textures.h"
 
-Player::Player(int x, int y) : HP(10), speed(0), positionX(x), positionY(y) {} // define player
+Player::Player(int x, int y) : HP(10), speed(0), positionX(x), positionY(y), bombSetter(0) {} // define player
 
 // functions
 // set bomb
 void Player::setBomb() {
+    if (bombSetter != 0) {
+        if (GetTime() - bombSetter >= 5.0){
+            bombSetter = 0;
+        }
+        return;
+    }
+
     placeBomb(positionX, positionY);
+    bombSetter = GetTime();
 }
 
 // move up
 void Player::moveUp() {
-    positionY -= 10;
+    if(checkGround(positionX, positionY)) {
+        positionY -= 1.5;
+    }
 }
 
 // move Down
 void Player::moveDown() {
-    positionY += 10;
+    positionY += 1.5;
 }
 
 // move left
 void Player::moveLeft() {
-    positionX -= 10;
+    positionX -= 1.5;
 }
 
 // move right
 void Player::moveRight() {
-    positionX += 10;
+    positionX += 1.5;
 }
 
 void Player::drawPlayer(PlayerType type) {
@@ -53,6 +63,17 @@ void Player::setplayer(int x, int y) {
 }
 int Player::getPlayerLive() const {
     return HP;
+}
+
+bool Player::checkGround(double x, double y){
+    int GridX = (int)(x / 32);
+    int GridY = (int)(y / 32);
+
+    if (currentMap.data[GridY][GridX] != TILE_FLOOR) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 void playermoovment(Player& player1, Player& player2) {

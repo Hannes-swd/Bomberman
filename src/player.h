@@ -14,6 +14,7 @@ class Player {
         int positionX;
         int positionY;
         int playerid;
+        double bombSetter;
 
     public:
         Player(int x, int y);
@@ -24,6 +25,7 @@ class Player {
         void moveDown();
         void moveLeft();
         void moveRight();
+        bool checkGround(double x, double y);
         void setplayer(int x, int y);
         int getPlayerLive() const;
 };
