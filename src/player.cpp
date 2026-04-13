@@ -22,24 +22,30 @@ void Player::setBomb() {
 
 // move up
 void Player::moveUp() {
-    if(checkGround(positionX, positionY)) {
+    if(checkGround(positionX, positionY - 1.5)) {
         positionY -= 1.5;
     }
 }
 
 // move Down
 void Player::moveDown() {
-    positionY += 1.5;
+    if(checkGround(positionX, positionY + 1.5)) {
+        positionY += 1.5;
+    }
 }
 
 // move left
 void Player::moveLeft() {
-    positionX -= 1.5;
+    if(checkGround(positionX - 1.5, positionY)) {
+        positionX -= 1.5;
+    }
 }
 
 // move right
 void Player::moveRight() {
-    positionX += 1.5;
+    if(checkGround(positionX + 1.5, positionY)) {
+        positionX += 1.5;
+    }
 }
 
 void Player::drawPlayer(PlayerType type) {
@@ -65,15 +71,22 @@ int Player::getPlayerLive() const {
     return HP;
 }
 
-bool Player::checkGround(double x, double y){
-    int GridX = (int)(x / 32);
-    int GridY = (int)(y / 32);
+bool Player::checkGround(double x, double y) {
+    int margin = 14; 
+    
+    // check ALL corner
+    int corners[4][2] = {
+        { (int)(x - margin) / 32, (int)(y - margin) / 32 }, // left up
+        { (int)(x + margin) / 32, (int)(y - margin) / 32 }, // right up
+        { (int)(x - margin) / 32, (int)(y + margin) / 32 }, // left down
+        { (int)(x + margin) / 32, (int)(y + margin) / 32 }, // right down
+    };
 
-    if (currentMap.data[GridY][GridX] != TILE_FLOOR) {
-        return false;
-    } else {
-        return true;
+    for (auto& c : corners) {
+        if (c[1] < 0 || c[0] < 0) return false; // corner check
+        if (currentMap.data[c[1]][c[0]] != TILE_FLOOR) return false; // floor check
     }
+    return true;
 }
 
 void playermoovment(Player& player1, Player& player2) {
