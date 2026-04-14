@@ -9,7 +9,6 @@ enum PlayerType {
 
 class Player {
     private:
-        int HP;
         int speed;
         double positionX;
         double positionY;
@@ -18,6 +17,7 @@ class Player {
         int bombRange;
 
     public:
+        int HP;
         Player(int x, int y);
 
         void setBomb();
@@ -30,5 +30,8 @@ class Player {
         void setplayer(int x, int y);
         int getPlayerLive() const;
         int getBombRange() const { return bombRange; }
+
+        double getPositionX() const { return positionX; }
+        double getPositionY() const { return positionY; }
 };
 void playermoovment(Player& player1, Player& player2);
