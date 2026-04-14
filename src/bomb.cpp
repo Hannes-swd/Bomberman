@@ -40,7 +40,7 @@ void drawBomb() {
     // Explosionen zeichnen
     double now = GetTime();
     for (const auto& exp : ExplosionList) {
-        if ((now - exp.startTime) < 0.5) {
+        if ((now - exp.startTime) < 0.3) {
             DrawRectangle(exp.posX, exp.posY, 32, 32, RED);
             DrawRectangleLines(exp.posX, exp.posY, 32, 32, ORANGE);
         }
@@ -112,14 +112,14 @@ void deleteBomb() {
     ExplosionList.erase(
         std::remove_if(ExplosionList.begin(), ExplosionList.end(),
             [now](const Explosion& e) {
-                return (now - e.startTime) >= 0.5;
+                return (now - e.startTime) >= 0.3;
             }),
         ExplosionList.end()
     );
     
     // Bomben explodieren lassen
     for (auto& bomb : BombList) {
-        if (!bomb.hasExploded && (now - bomb.spawnTime) >= 5.0) {
+        if (!bomb.hasExploded && (now - bomb.spawnTime) >= 3.0) {
             bombExplode(bomb.posX, bomb.posY, bomb.explosionRange);
             bomb.hasExploded = true;
         }

@@ -15,6 +15,7 @@ class Player {
         int playerid;
         double bombSetter;
         int bombRange;
+        double lastDamageTime;
 
     public:
         int HP;
@@ -26,6 +27,7 @@ class Player {
         void moveDown();
         void moveLeft();
         void moveRight();
+        void takeDamage(int amount);
         bool checkGround(double x, double y);
         void setplayer(int x, int y);
         int getPlayerLive() const;
