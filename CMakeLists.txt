@@ -22,6 +22,7 @@ add_executable(MyProgram
     src/cam.cpp
     src/Ui.cpp
     src/textures.cpp
+    src/item.cpp
 )
 
 target_link_libraries(MyProgram PRIVATE raylib)

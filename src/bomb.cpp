@@ -6,6 +6,8 @@
 #include "bomb.h"
 #include "textures.h"
 #include "map.h"
+#include "item.h"
+#include <algorithm>
 
 
 
@@ -78,6 +80,9 @@ void destroyWall(int gridX, int gridY) {
         if (currentMap.data[gridY][gridX] == TILE_WALL) {
             // replace with floor tile
             currentMap.data[gridY][gridX] = TILE_FLOOR;
+
+            //upgrade
+            placeItem(BombUpgrade, gridX, gridY);
         }
     }
 }
