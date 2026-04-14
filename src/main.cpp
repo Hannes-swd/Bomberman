@@ -84,9 +84,9 @@ int main(void)
             player2.drawPlayer(PLAYER_TWO);
 
             playermoovment(player1, player2);
-            
-            endCamera();
             DrawLives(player1, player2);
+            endCamera();
+            
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
