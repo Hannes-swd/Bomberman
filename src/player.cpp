@@ -132,3 +132,7 @@ void playermoovment(Player& player1, Player& player2) {
     if (isPlayerInExplosion(player2.getPositionX(), player2.getPositionY()))
         player2.takeDamage(2);
 }
+
+void Player::addBombRange() {
+    bombRange++;
+}

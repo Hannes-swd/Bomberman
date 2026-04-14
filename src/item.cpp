@@ -22,3 +22,40 @@ void placeItem(Items item, int posx, int posy) {
     newItem.posy = posy * 32;
     ItemsOngroundList.push_back(newItem);
 }
+
+
+void colecktItem(Player& player1, Player& player2) {
+    for (size_t i = 0; i < ItemsOngroundList.size(); i++) {
+        ItemsOnGround& item = ItemsOngroundList[i];
+        //player1
+        if (player1.getPositionX() >= item.posx && 
+            player1.getPositionX() < item.posx + 32 &&
+            player1.getPositionY() >= item.posy && 
+            player1.getPositionY() < item.posy + 32) {
+            
+            switch (item.item) {
+                case BombUpgrade:
+                    player1.addBombRange();
+                    break;
+            }
+            
+            ItemsOngroundList.erase(ItemsOngroundList.begin() + i);
+            i--; 
+        }
+        //player2
+        else if (player2.getPositionX() >= item.posx && 
+                 player2.getPositionX() < item.posx + 32 &&
+                 player2.getPositionY() >= item.posy && 
+                 player2.getPositionY() < item.posy + 32) {
+            
+            switch (item.item) {
+                case BombUpgrade:
+                    player2.addBombRange();
+                    break;
+            }
+            
+            ItemsOngroundList.erase(ItemsOngroundList.begin() + i);
+            i--;
+        }
+    }
+}

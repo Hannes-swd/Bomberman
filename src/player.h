@@ -32,6 +32,7 @@ class Player {
         void setplayer(int x, int y);
         int getPlayerLive() const;
         int getBombRange() const { return bombRange; }
+        void addBombRange();
 
         double getPositionX() const { return positionX; }
         double getPositionY() const { return positionY; }
