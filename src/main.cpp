@@ -71,7 +71,7 @@ int main(void)
             lastHeight = currentHeight;
         }
         //coleckts dropped items
-        colecktItem();
+        colecktItem(player1, player2);
         // Draw
         //----------------------------------------------------------------------------------
         BeginDrawing();
