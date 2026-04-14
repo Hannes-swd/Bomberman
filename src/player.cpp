@@ -54,13 +54,13 @@ void Player::moveRight() {
 
 void Player::drawPlayer(PlayerType type) {
     if (type == PLAYER_ONE) {
-        float scale = 32.0f / textures["player1"].width;
+        float scale = 24.0f / textures["player1"].width;
         float drawX = (float)positionX - (textures["player1"].width * scale) / 2.0f;
         float drawY = (float)positionY - (textures["player1"].height * scale) / 2.0f;
         DrawTextureEx(textures["player1"], { drawX, drawY }, 0, scale, WHITE);
     }
     if (type == PLAYER_TWO) {
-        float scale = 32.0f / textures["player2"].width;
+        float scale = 24.0f / textures["player2"].width;
         float drawX = (float)positionX - (textures["player2"].width * scale) / 2.0f;
         float drawY = (float)positionY - (textures["player2"].height * scale) / 2.0f;
         DrawTextureEx(textures["player2"], { drawX, drawY }, 0, scale, WHITE);
