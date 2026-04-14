@@ -4,11 +4,17 @@
 #include "player.h"
 #include "textures.h"
 
-Player::Player(int x, int y) : HP(10), speed(0), positionX(x), positionY(y), bombSetter(0), bombRange(1) {}
+Player::Player(int x, int y) : HP(10), speed(0), positionX(x), positionY(y), bombSetter(0), bombRange(1), lastDamageTime(0) {}
+
+void Player::takeDamage(int amount) {
+    if (GetTime() - lastDamageTime < 3.0) return; // Cooldown
+    HP -= amount;
+    lastDamageTime = GetTime();
+}
 
 void Player::setBomb() {
     if (bombSetter != 0) {
-        if (GetTime() - bombSetter >= 5.0){
+        if (GetTime() - bombSetter >= 3.0){
             bombSetter = 0;
         }
         return;
@@ -121,8 +127,8 @@ void playermoovment(Player& player1, Player& player2) {
     }
 
     if (isPlayerInExplosion(player1.getPositionX(), player1.getPositionY()))
-        player1.HP -= 2;
+        player1.takeDamage(2);
 
     if (isPlayerInExplosion(player2.getPositionX(), player2.getPositionY()))
-        player2.HP -= 2;
+        player2.takeDamage(2);
 }
