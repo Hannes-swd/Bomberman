@@ -5,6 +5,8 @@
 #include "cam.h"
 #include "Ui.h"
 #include "textures.h"
+#include "item.h"
+
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
@@ -78,6 +80,8 @@ int main(void)
             DrawMap();
 
             deleteBomb();
+
+            DrawItems();
             drawBomb();
 
             player1.drawPlayer(PLAYER_ONE);
