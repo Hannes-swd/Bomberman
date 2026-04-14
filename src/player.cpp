@@ -119,4 +119,10 @@ void playermoovment(Player& player1, Player& player2) {
     {
         player2.setBomb();
     }
+
+    if (isPlayerInExplosion(player1.getPositionX(), player1.getPositionY()))
+        player1.HP -= 2;
+
+    if (isPlayerInExplosion(player2.getPositionX(), player2.getPositionY()))
+        player2.HP -= 2;
 }

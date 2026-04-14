@@ -134,3 +134,17 @@ void deleteBomb() {
         BombList.end()
     );
 }
+
+bool isPlayerInExplosion(double playerX, double playerY) {
+    double now = GetTime();
+    for (const auto& exp : ExplosionList) {
+        if ((now - exp.startTime) >= 0.5) continue; 
+        
+        
+        if (playerX >= exp.posX && playerX < exp.posX + 32 &&
+            playerY >= exp.posY && playerY < exp.posY + 32) {
+            return true;
+        }
+    }
+    return false;
+}

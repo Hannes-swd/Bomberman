@@ -24,6 +24,8 @@ struct Explosion {
     double startTime;
 };
 
+bool isPlayerInExplosion(double playerX, double playerY);
+
 // define list - nur Deklarationen, keine Definitionen!
 extern std::vector<Bomb> BombList;
 extern std::vector<Explosion> ExplosionList;
