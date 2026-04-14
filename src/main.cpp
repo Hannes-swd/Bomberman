@@ -34,7 +34,7 @@ int main(void)
 
     int lastWidth = GetScreenWidth();
     int lastHeight = GetScreenHeight();
-    
+
     managecam();
 
     // Main game loop
@@ -70,6 +70,8 @@ int main(void)
             lastWidth = currentWidth;
             lastHeight = currentHeight;
         }
+        //coleckts dropped items
+        colecktItem();
         // Draw
         //----------------------------------------------------------------------------------
         BeginDrawing();
