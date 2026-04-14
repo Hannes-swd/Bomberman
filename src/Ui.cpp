@@ -8,9 +8,9 @@ void DrawLives(const Player& player1, const Player& player2) {
     DrawText(TextFormat("HP: %d", P1HP), 
              (int)player1.getPositionX() - 20, 
              (int)player1.getPositionY() - 30, 
-             20, RED);
+             20, BLUE);
     DrawText(TextFormat("HP: %d", P2HP), 
              (int)player2.getPositionX() - 20, 
              (int)player2.getPositionY() - 30, 
-             20, BLUE);
+             20, RED);
 }

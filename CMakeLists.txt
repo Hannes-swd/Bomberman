@@ -51,7 +51,13 @@ add_custom_command(TARGET MyProgram POST_BUILD
         ${CMAKE_SOURCE_DIR}/src/img/bedrock.png
         $<TARGET_FILE_DIR:MyProgram>/img/bedrock.png
 
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different 
         ${CMAKE_SOURCE_DIR}/src/img/stone.png
         $<TARGET_FILE_DIR:MyProgram>/img/stone.png
+
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different 
+        ${CMAKE_SOURCE_DIR}/src/img/BombUpgrade.png
+        $<TARGET_FILE_DIR:MyProgram>/img/BombUpgrade.png
+
+    
 )
