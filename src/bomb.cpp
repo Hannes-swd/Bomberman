@@ -3,6 +3,7 @@
 #include <iostream>
 #include "textures.h"
 #include "map.h"
+#include "item.h"
 #include <algorithm>
 
 // Definitionen der globalen Variablen
@@ -52,6 +53,9 @@ void destroyWall(int gridX, int gridY) {
     if (gridX >= 0 && gridX < currentMap.width && gridY >= 0 && gridY < currentMap.height) {
         if (currentMap.data[gridY][gridX] == TILE_WALL) {
             currentMap.data[gridY][gridX] = TILE_FLOOR;
+
+            //upgrade
+            placeItem(BombUpgrade, gridX, gridY);
         }
     }
 }
