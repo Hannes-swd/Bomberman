@@ -11,8 +11,8 @@ class Player {
     private:
         int HP;
         int speed;
-        int positionX;
-        int positionY;
+        double positionX;
+        double positionY;
         int playerid;
         double bombSetter;
         int bombRange;
