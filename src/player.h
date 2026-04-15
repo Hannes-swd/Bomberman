@@ -15,6 +15,7 @@ class Player {
         int playerid;
         double bombSetter;
         int bombRange;
+        int bombcount;
         double lastDamageTime;
 
     public:
@@ -32,7 +33,9 @@ class Player {
         void setplayer(int x, int y);
         int getPlayerLive() const;
         int getBombRange() const { return bombRange; }
+        int getBombCount() const { return bombcount; }
         void addBombRange();
+        void addBombCounte();
 
         double getPositionX() const { return positionX; }
         double getPositionY() const { return positionY; }

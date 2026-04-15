@@ -74,7 +74,9 @@ void Player::setplayer(int x, int y) {
 int Player::getPlayerLive() const {
     return HP;
 }
-
+int Player::getBombCount() const {
+    return bombcount;
+}
 bool Player::checkGround(double x, double y) {
     int margin = 14; 
     
@@ -135,4 +137,8 @@ void playermoovment(Player& player1, Player& player2) {
 
 void Player::addBombRange() {
     bombRange++;
+}
+
+void Player::addBombCounte() {
+    bombcount++;
 }
