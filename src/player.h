@@ -34,6 +34,7 @@ class Player {
         int getPlayerLive() const;
         int getBombRange() const { return bombRange; }
         int getBombCount() const { return bombcount; }
+        double getBombSetter() const { return bombSetter; }
         void addBombRange();
         void addBombCounte();
 

@@ -60,5 +60,8 @@ add_custom_command(TARGET MyProgram POST_BUILD
         ${CMAKE_SOURCE_DIR}/src/img/BombUpgrade.png
         $<TARGET_FILE_DIR:MyProgram>/img/BombUpgrade.png
 
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different 
+        ${CMAKE_SOURCE_DIR}/src/img/BpombCount.png
+        $<TARGET_FILE_DIR:MyProgram>/img/BpombCount.png
     
 )

@@ -4,7 +4,15 @@
 #include "player.h"
 #include "textures.h"
 
-Player::Player(int x, int y) : HP(10), speed(0), positionX(x), positionY(y), bombSetter(0), bombRange(1), lastDamageTime(0) {}
+Player::Player(int x, int y) : HP(10), 
+speed(0), 
+positionX(x), 
+positionY(y), 
+bombSetter(0), 
+bombRange(1), 
+lastDamageTime(0), 
+bombcount(1)
+{}
 
 void Player::takeDamage(int amount) {
     if (GetTime() - lastDamageTime < 3.0) return; // Cooldown
@@ -13,15 +21,17 @@ void Player::takeDamage(int amount) {
 }
 
 void Player::setBomb() {
-    if (bombSetter != 0) {
-        if (GetTime() - bombSetter >= 3.0){
-            bombSetter = 0;
+    int activeBombs = 0;
+    double now = GetTime();
+    
+    for (const auto& bomb : BombList) {
+        if (now - bomb.spawnTime < 3.0) {
+            activeBombs++;
         }
-        return;
     }
-
-    placeBomb(positionX, positionY, bombRange);
-    bombSetter = GetTime();
+    if (activeBombs < bombcount) {
+        placeBomb(positionX, positionY, bombRange);
+    }
 }
 
 // move up
