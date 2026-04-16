@@ -116,7 +116,7 @@ void playermoovment(Player& player1, Player& player2) {
     if (IsKeyDown(KEY_K))
         player2.moveDown();
 
-    if (IsKeyDown(KEY_K))
+    if (IsKeyDown(KEY_J))
         player2.moveLeft();
 
     if (IsKeyDown(KEY_L))
