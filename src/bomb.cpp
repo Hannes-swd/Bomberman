@@ -51,7 +51,7 @@ void drawBomb() {
         // if not exploded
         if (!Bomb.hasExploded) {
             // scale and position
-            float scale = 32.0f / textures["bomb"].width;
+            float scale = 26.0f / textures["bomb"].width;
             float drawX = (float)Bomb.posX - (textures["bomb"].width * scale) / 2.0f;
             float drawY = (float)Bomb.posY - (textures["bomb"].height * scale) / 2.0f;
 
