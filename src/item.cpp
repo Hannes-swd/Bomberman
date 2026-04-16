@@ -9,7 +9,7 @@ std::vector<ItemsOnGround> ItemsOngroundList;
 
 void DrawItems() {
     for (const auto& ItemsOnGround : ItemsOngroundList) {
-        float scale = 32.0f / textures["BombUpgrade"].width;
+        float scale = 26.0f / textures["BombUpgrade"].width;
         float drawX = (float)ItemsOnGround.posx - (textures["BombUpgrade"].width * scale) / 2.0f;
         float drawY = (float)ItemsOnGround.posy - (textures["BombUpgrade"].height * scale) / 2.0f;
         DrawTextureEx(textures["BombUpgrade"], { drawX + 16, drawY + 16 }, 0, scale, WHITE);
