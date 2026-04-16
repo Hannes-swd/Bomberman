@@ -8,13 +8,19 @@
 std::vector<ItemsOnGround> ItemsOngroundList;
 
 void DrawItems() {
-    for (const auto& ItemsOnGround : ItemsOngroundList) {
+    for (const auto& item : ItemsOngroundList) {
         float scale = 26.0f / textures["BombUpgrade"].width;
-        float drawX = (float)ItemsOnGround.posx - (textures["BombUpgrade"].width * scale) / 2.0f;
-        float drawY = (float)ItemsOnGround.posy - (textures["BombUpgrade"].height * scale) / 2.0f;
-        DrawTextureEx(textures["BombUpgrade"], { drawX + 16, drawY + 16 }, 0, scale, WHITE);
+        float drawX = (float)item.posx - (textures["BombUpgrade"].width * scale) / 2.0f;
+        float drawY = (float)item.posy - (textures["BombUpgrade"].height * scale) / 2.0f;
+        
+        if (item.item == BombUpgrade) {
+            DrawTextureEx(textures["BombUpgrade"], { drawX + 16, drawY + 16 }, 0, scale, WHITE);
+        } else if (item.item == Bombcount) {
+            DrawTextureEx(textures["BpombCount"], { drawX + 16, drawY + 16 }, 0, scale, WHITE);
+        }
     }
 }
+
 void placeItem(Items item, int posx, int posy) {
     ItemsOnGround newItem;
     newItem.item = item;
@@ -37,6 +43,9 @@ void colecktItem(Player& player1, Player& player2) {
                 case BombUpgrade:
                     player1.addBombRange();
                     break;
+                case Bombcount:
+                    player1.addBombCounte();
+                    break;
             }
             
             ItemsOngroundList.erase(ItemsOngroundList.begin() + i);
@@ -51,6 +60,9 @@ void colecktItem(Player& player1, Player& player2) {
             switch (item.item) {
                 case BombUpgrade:
                     player2.addBombRange();
+                    break;
+                case Bombcount:
+                    player2.addBombCounte();
                     break;
             }
             

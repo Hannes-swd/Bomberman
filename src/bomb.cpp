@@ -48,24 +48,17 @@ void placeBomb(int x, int y, int explosionRange) {
 void drawBomb() {
     // draw bomb for every element in bomblist
     for (const auto& Bomb : BombList) {
-        // if not exploded
-        if (!Bomb.hasExploded) {
-            // scale and position
-            float scale = 26.0f / textures["bomb"].width;
-            float drawX = (float)Bomb.posX - (textures["bomb"].width * scale) / 2.0f;
-            float drawY = (float)Bomb.posY - (textures["bomb"].height * scale) / 2.0f;
+        float scale = 26.0f / textures["bomb"].width;
+        float drawX = (float)Bomb.posX - (textures["bomb"].width * scale) / 2.0f;
+        float drawY = (float)Bomb.posY - (textures["bomb"].height * scale) / 2.0f;
 
-            // draw as texture
-            DrawTextureEx(textures["bomb"], { drawX + 16, drawY + 16 }, 0, scale, WHITE);
-        }
+        DrawTextureEx(textures["bomb"], { drawX + 16, drawY + 16 }, 0, scale, WHITE);
     }
     
-    // draw explotion for every element in explosionlist
     double now = GetTime();
     for (const auto& exp : ExplosionList) {
         // if time to explode bomb
         if ((now - exp.startTime) < 0.3) {
-            // draw explotion with border
             DrawRectangle(exp.posX, exp.posY, 32, 32, RED);
             DrawRectangleLines(exp.posX, exp.posY, 32, 32, ORANGE);
         }
@@ -84,6 +77,8 @@ void destroyWall(int gridX, int gridY) {
             //upgrade
             if (rand() % 100 < 20)
                 placeItem(BombUpgrade, gridX, gridY);
+            else if (rand() % 100 < 20)
+                placeItem(Bombcount, gridX, gridY);
         }
     }
 }
