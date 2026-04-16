@@ -110,22 +110,22 @@ void playermoovment(Player& player1, Player& player2) {
     if (IsKeyDown(KEY_D))
         player1.moveRight();
 
-    if (IsKeyDown(KEY_UP))
+    if (IsKeyDown(KEY_I))
         player2.moveUp();
 
-    if (IsKeyDown(KEY_DOWN))
+    if (IsKeyDown(KEY_K))
         player2.moveDown();
 
-    if (IsKeyDown(KEY_LEFT))
+    if (IsKeyDown(KEY_K))
         player2.moveLeft();
 
-    if (IsKeyDown(KEY_RIGHT))
+    if (IsKeyDown(KEY_L))
         player2.moveRight();
 
-    if (IsKeyPressed(KEY_TAB))
+    if (IsKeyPressed(KEY_Q))
         player1.setBomb();
 
-    if (IsKeyPressed(KEY_RIGHT_SHIFT))
+    if (IsKeyPressed(KEY_U))
     {
         player2.setBomb();
     }
