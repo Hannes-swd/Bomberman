@@ -1,5 +1,6 @@
 #pragma once
 #include "bomb.h"
+#include "wall.h"
 #include <raylib.h>
 
 enum PlayerType {
@@ -16,6 +17,7 @@ class Player {
         double bombSetter;
         int bombRange;
         int bombcount;
+        int wallCount;
         double lastDamageTime;
 
     public:
@@ -23,6 +25,7 @@ class Player {
         Player(int x, int y);
 
         void setBomb();
+        void setWall();
         void drawPlayer(PlayerType type); 
         void moveUp();
         void moveDown();
