@@ -75,9 +75,9 @@ void destroyWall(int gridX, int gridY) {
             currentMap.data[gridY][gridX] = TILE_FLOOR;
 
             //upgrade
-            if (rand() % 100 < 20)
+            if (rand() % 100 < 5)
                 placeItem(BombUpgrade, gridX, gridY);
-            else if (rand() % 100 < 20)
+            else if (rand() % 100 < 5)
                 placeItem(Bombcount, gridX, gridY);
         }
     }

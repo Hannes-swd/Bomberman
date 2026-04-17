@@ -2,6 +2,7 @@
 #include "bomb.h"
 #include "wall.h"
 #include <raylib.h>
+#include "player.h"
 
 enum PlayerType {
     PLAYER_ONE,
@@ -45,5 +46,18 @@ class Player {
 
         double getPositionX() const { return positionX; }
         double getPositionY() const { return positionY; }
+
+
+        struct inventar
+        {
+            int count;
+            items item;
+
+        };
+        std::vector<inventar> inventarListe;
 };
 void playermoovment(Player& player1, Player& player2);
+
+enum items {
+    stone,
+};
