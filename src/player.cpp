@@ -13,7 +13,9 @@ bombSetter(0),
 bombRange(1), 
 lastDamageTime(0), 
 bombcount(1),
-wallCount(1)
+wallCount(1),
+facingX(0),
+facingY(0)
 {}
 
 void Player::takeDamage(int amount) {
@@ -40,7 +42,8 @@ void Player::setWall() {
     int activeWalls = 0;
 
     if (activeWalls < wallCount) {
-        drawWall(positionX, positionY);
+        drawWall(positionX + facingX * 32, positionY + facingY * 32);
+        activeWalls++;
     }
 }
 
@@ -48,6 +51,8 @@ void Player::setWall() {
 void Player::moveUp() {
     if(checkGround(positionX, positionY - 1.5)) {
         positionY -= 1.5;
+        facingY =  2;
+        facingX = 0;
     }
 }
 
@@ -55,6 +60,8 @@ void Player::moveUp() {
 void Player::moveDown() {
     if(checkGround(positionX, positionY + 1.5)) {
         positionY += 1.5;
+        facingY =  2;
+        facingX = 0;
     }
 }
 
@@ -62,6 +69,8 @@ void Player::moveDown() {
 void Player::moveLeft() {
     if(checkGround(positionX - 1.5, positionY)) {
         positionX -= 1.5;
+        facingY = 0;
+        facingX =  2;
     }
 }
 
@@ -69,6 +78,8 @@ void Player::moveLeft() {
 void Player::moveRight() {
     if(checkGround(positionX + 1.5, positionY)) {
         positionX += 1.5;
+        facingY = 0;
+        facingX =  2;
     }
 }
 
@@ -155,7 +166,7 @@ void playermoovment(Player& player1, Player& player2) {
         player1.setWall();
     }
 
-    if (IsKeyPressed(KEY_Z))
+    if (IsKeyPressed(KEY_Y))
     {
         player2.setWall();
     }
