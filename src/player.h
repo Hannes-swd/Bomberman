@@ -19,6 +19,8 @@ class Player {
         int bombcount;
         int wallCount;
         double lastDamageTime;
+        int facingX; 
+        int facingY; 
 
     public:
         int HP;
