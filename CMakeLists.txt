@@ -23,6 +23,7 @@ add_executable(MyProgram
     src/Ui.cpp
     src/textures.cpp
     src/item.cpp
+    src/wall.cpp
 )
 
 target_link_libraries(MyProgram PRIVATE raylib)

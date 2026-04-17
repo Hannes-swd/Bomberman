@@ -3,6 +3,7 @@
 #include "bomb.h"
 #include "player.h"
 #include "textures.h"
+#include "wall.h"
 
 Player::Player(int x, int y) : HP(10), 
 speed(0), 
@@ -11,7 +12,8 @@ positionY(y),
 bombSetter(0), 
 bombRange(1), 
 lastDamageTime(0), 
-bombcount(1)
+bombcount(1),
+wallCount(1)
 {}
 
 void Player::takeDamage(int amount) {
@@ -31,6 +33,14 @@ void Player::setBomb() {
     }
     if (activeBombs < bombcount) {
         placeBomb(positionX, positionY, bombRange);
+    }
+}
+
+void Player::setWall() {
+    int activeWalls = 0;
+
+    if (activeWalls < wallCount) {
+        drawWall(positionX, positionY);
     }
 }
 
@@ -138,6 +148,16 @@ void playermoovment(Player& player1, Player& player2) {
     if (IsKeyPressed(KEY_U))
     {
         player2.setBomb();
+    }
+
+    if (IsKeyPressed(KEY_TAB))
+    {
+        player1.setWall();
+    }
+
+    if (IsKeyPressed(KEY_Z))
+    {
+        player2.setWall();
     }
 
     if (isPlayerInExplosion(player1.getPositionX(), player1.getPositionY()))
