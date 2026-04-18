@@ -8,6 +8,15 @@ enum PlayerType {
     PLAYER_ONE,
     PLAYER_TWO
 };
+enum items {
+    stone,
+};
+
+struct inventar
+{
+    int count;
+    items item;
+};
 
 class Player {
     private:
@@ -47,17 +56,10 @@ class Player {
         double getPositionX() const { return positionX; }
         double getPositionY() const { return positionY; }
 
-
-        struct inventar
-        {
-            int count;
-            items item;
-
-        };
+        //inventar
         std::vector<inventar> inventarListe;
+        void addItem(items item, int amount );
+        void removeItem(items item, int amount );
 };
 void playermoovment(Player& player1, Player& player2);
 
-enum items {
-    stone,
-};
