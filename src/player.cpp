@@ -83,6 +83,29 @@ void Player::moveRight() {
     }
 }
 
+void Player::addItem(items item, int amount ) {
+    for (auto& slot : inventarListe) {
+        if (slot.item == item) {
+            slot.count += amount; 
+            return;
+        }
+    }
+    
+    inventarListe.push_back({amount, item});
+}
+
+void Player::removeItem(items item, int amount) {
+    for (auto it = inventarListe.begin(); it != inventarListe.end(); ++it) {
+        if (it->item == item) {
+            it->count -= amount;
+            if (it->count <= 0) {
+                inventarListe.erase(it);
+            }
+            return;
+        }
+    }
+}
+
 void Player::drawPlayer(PlayerType type) {
     if (type == PLAYER_ONE) {
         float scale = 16.0f / textures["player1"].width;
