@@ -2,3 +2,4 @@
 #include "raylib.h"
 
 void DrawLives(const Player& player1, const Player& player2);
+void DrawInv(const Player& player1, const Player& player2);

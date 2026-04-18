@@ -35,6 +35,8 @@ int main(void)
     int lastWidth = GetScreenWidth();
     int lastHeight = GetScreenHeight();
 
+    player1.addItem(stone, 1);
+
     managecam();
 
     // Main game loop
@@ -91,6 +93,7 @@ int main(void)
 
             playermoovment(player1, player2);
             DrawLives(player1, player2);
+            DrawInv(player1, player2);
             endCamera();
             
         EndDrawing();

@@ -3,6 +3,7 @@
 #include "wall.h"
 #include <raylib.h>
 #include "player.h"
+#include <vector>
 
 enum PlayerType {
     PLAYER_ONE,
