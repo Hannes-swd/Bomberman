@@ -51,7 +51,7 @@ void Player::setWall() {
 void Player::moveUp() {
     if(checkGround(positionX, positionY - 1.5)) {
         positionY -= 1.5;
-        facingY =  2;
+        facingY = 1;
         facingX = 0;
     }
 }
@@ -60,7 +60,7 @@ void Player::moveUp() {
 void Player::moveDown() {
     if(checkGround(positionX, positionY + 1.5)) {
         positionY += 1.5;
-        facingY =  2;
+        facingY = 1;
         facingX = 0;
     }
 }
@@ -70,7 +70,7 @@ void Player::moveLeft() {
     if(checkGround(positionX - 1.5, positionY)) {
         positionX -= 1.5;
         facingY = 0;
-        facingX =  2;
+        facingX =  1;
     }
 }
 
@@ -79,7 +79,7 @@ void Player::moveRight() {
     if(checkGround(positionX + 1.5, positionY)) {
         positionX += 1.5;
         facingY = 0;
-        facingX =  2;
+        facingX = 1;
     }
 }
 
