@@ -81,7 +81,7 @@ void DrawInv(const Player& player1, const Player& player2) {
                 Rectangle srcRect = { 0, 0, (float)textures["stone"].width, (float)textures["stone"].height };
                 DrawTexturePro(textures["stone"], srcRect, destRect, {0, 0}, 0, WHITE);
             } else {
-                DrawRectangle(destRect.x, destRect.y, iconSize, iconSize, GRAY);
+                DrawRectangle(destRect.x, destRect.y, iconSize, iconSize, ORANGE);
             }
             
             char countText[10];
@@ -115,7 +115,7 @@ void DrawInv(const Player& player1, const Player& player2) {
                 Rectangle srcRect = { 0, 0, (float)textures["stone"].width, (float)textures["stone"].height };
                 DrawTexturePro(textures["stone"], srcRect, destRect, {0, 0}, 0, WHITE);
             } else {
-                DrawRectangle(destRect.x, destRect.y, iconSize, iconSize, GRAY);
+                DrawRectangle(destRect.x, destRect.y, iconSize, iconSize, ORANGE);
             }
             
             char countText[10];
