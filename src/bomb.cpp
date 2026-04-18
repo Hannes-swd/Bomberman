@@ -5,20 +5,21 @@
 
 #include "bomb.h"
 #include "textures.h"
+#include "player.h"
 #include "map.h"
 #include "item.h"
 #include <algorithm>
 
 
 
-// define global variables
+// define global variables & class
 std::vector<Bomb> BombList;
 std::vector<Explosion> ExplosionList;
 
 
 
 // add bomb element to bomblist
-void placeBomb(int x, int y, int explosionRange) {
+void placeBomb(int x, int y, int explosionRange, Player* player) {
     // create new bomb element
     Bomb newBomb;
 
@@ -37,6 +38,7 @@ void placeBomb(int x, int y, int explosionRange) {
     newBomb.explosionRange = explosionRange; 
     newBomb.spawnTime = GetTime();
     newBomb.hasExploded = false;
+    newBomb.owner = player;
 
     // add bomb to bomblist
     BombList.push_back(newBomb);
@@ -68,7 +70,7 @@ void drawBomb() {
 
 
 // function to destroy wall tile
-void destroyWall(int gridX, int gridY) {
+void destroyWall(int gridX, int gridY, Player* owner) {
     if (gridX >= 0 && gridX < currentMap.width && gridY >= 0 && gridY < currentMap.height) {
         if (currentMap.data[gridY][gridX] == TILE_WALL) {
             // replace with floor tile
@@ -79,6 +81,8 @@ void destroyWall(int gridX, int gridY) {
                 placeItem(BombUpgrade, gridX, gridY);
             else if (rand() % 100 < 5)
                 placeItem(Bombcount, gridX, gridY);
+            else if (rand() % 100 < 25)
+                owner->addItem(stone, 1);
         }
     }
 }
@@ -86,7 +90,7 @@ void destroyWall(int gridX, int gridY) {
 
 
 // function to calculate explosion range
-void addExplosionInDirection(int startGridX, int startGridY, int dx, int dy, int range) {
+void addExplosionInDirection(int startGridX, int startGridY, int dx, int dy, int range, Player* owner) {
     for (int i = 1; i <= range; i++) {
         // get start position
         int checkX = startGridX + (dx * i);
@@ -115,7 +119,7 @@ void addExplosionInDirection(int startGridX, int startGridY, int dx, int dy, int
         
         // destroy wall if in range
         if (currentMap.data[checkY][checkX] == TILE_WALL) {
-            destroyWall(checkX, checkY);
+            destroyWall(checkX, checkY, owner);
             break;
         }
     }
@@ -124,7 +128,7 @@ void addExplosionInDirection(int startGridX, int startGridY, int dx, int dy, int
 
 
 // function for bomb explosion
-void bombExplode(int posX, int posY, int explosionRange) {
+void bombExplode(int posX, int posY, int explosionRange, Player* owner) {
     // get position in grid
     int gridX = posX / 32;
     int gridY = posY / 32;
@@ -141,10 +145,10 @@ void bombExplode(int posX, int posY, int explosionRange) {
     ExplosionList.push_back(centerExp);
     
     // explode in all directions
-    addExplosionInDirection(gridX, gridY, 1, 0, explosionRange);
-    addExplosionInDirection(gridX, gridY, -1, 0, explosionRange);
-    addExplosionInDirection(gridX, gridY, 0, 1, explosionRange);
-    addExplosionInDirection(gridX, gridY, 0, -1, explosionRange);
+    addExplosionInDirection(gridX, gridY, 1, 0, explosionRange, owner);
+    addExplosionInDirection(gridX, gridY, -1, 0, explosionRange, owner);
+    addExplosionInDirection(gridX, gridY, 0, 1, explosionRange, owner);
+    addExplosionInDirection(gridX, gridY, 0, -1, explosionRange, owner);
 }
 
 
@@ -166,7 +170,7 @@ void deleteBomb() {
     // explode bombs
     for (auto& bomb : BombList) {
         if (!bomb.hasExploded && (now - bomb.spawnTime) >= 3.0) {
-            bombExplode(bomb.posX, bomb.posY, bomb.explosionRange);
+            bombExplode(bomb.posX, bomb.posY, bomb.explosionRange, bomb.owner);
             bomb.hasExploded = true;
         }
     }

@@ -2,12 +2,16 @@
 #include <iostream>
 #include <vector>
 #include "map.h"
+#include "player.h"
+
+class Player;
 
 // define functions & struct
-void placeBomb(int x, int y, int explosionRange);
+void placeBomb(int x, int y, int explosionRange, Player* owner);
 void drawBomb();
 void deleteBomb();
-void bombExplode(int posX, int posY, int explosionRange);
+void destroyWall(int gridX, int gridY, Player* owner); 
+void bombExplode(int posX, int posY, int explosionRange, Player* owner);
 
 struct Bomb {
     int posX;
@@ -15,6 +19,7 @@ struct Bomb {
     double spawnTime;
     bool hasExploded;
     int explosionRange;  // Individuelle Explosionsgröße für jede Bombe
+    Player* owner;
 };
 
 // Neue Variable für Explosionsdauer

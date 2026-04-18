@@ -13,7 +13,6 @@ bombSetter(0),
 bombRange(1), 
 lastDamageTime(0), 
 bombcount(1),
-wallCount(1),
 facingX(0),
 facingY(0)
 {}
@@ -34,16 +33,23 @@ void Player::setBomb() {
         }
     }
     if (activeBombs < bombcount) {
-        placeBomb(positionX, positionY, bombRange);
+        placeBomb(positionX, positionY, bombRange, this);
     }
 }
 
 void Player::setWall() {
-    int activeWalls = 0;
+    int stoneCount = 0;
 
-    if (activeWalls < wallCount) {
-        drawWall(positionX + facingX * 32, positionY + facingY * 32);
-        activeWalls++;
+    for (const auto& slot : inventarListe) {
+        if (slot.item == stone) {
+            stoneCount = slot.count;
+            break;
+        }
+    }
+
+    if (0 < stoneCount) {
+            drawWall(positionX + facingX * 32, positionY + facingY * 32);
+            removeItem(stone, 1);
     }
 }
 
