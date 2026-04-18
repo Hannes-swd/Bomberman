@@ -28,7 +28,6 @@ class Player {
         double bombSetter;
         int bombRange;
         int bombcount;
-        int wallCount;
         double lastDamageTime;
         int facingX; 
         int facingY; 
