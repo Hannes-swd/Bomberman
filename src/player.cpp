@@ -14,7 +14,8 @@ bombRange(1),
 lastDamageTime(0), 
 bombcount(1),
 facingX(0),
-facingY(0)
+facingY(0),
+selectedItemIndex(-1)
 {}
 
 void Player::takeDamage(int amount) {
@@ -52,6 +53,44 @@ void Player::setWall() {
             removeItem(stone, 1);
     }
 }
+
+
+void Player::selectNextItem() {
+    if (inventarListe.empty()) {
+        selectedItemIndex = -1;
+        return;
+    }
+    
+    selectedItemIndex++;
+    if (selectedItemIndex >= (int)inventarListe.size()) {
+        selectedItemIndex = -1;  // Zurück zu "nichts ausgewählt"
+    }
+}
+
+void Player::selectPreviousItem() {
+    if (inventarListe.empty()) {
+        selectedItemIndex = -1;
+        return;
+    }
+    
+    if (selectedItemIndex == -1) {
+        selectedItemIndex = (int)inventarListe.size() - 1;
+    } else {
+        selectedItemIndex--;
+        if (selectedItemIndex < -1) {
+            selectedItemIndex = (int)inventarListe.size() - 1;
+        }
+    }
+}
+
+items Player::getSelectedItem() const {
+    if (hasSelectedItem()) {
+        return inventarListe[selectedItemIndex].item;
+    }
+    return stone; 
+}
+
+
 
 // move up
 void Player::moveUp() {
@@ -170,6 +209,19 @@ void playermoovment(Player& player1, Player& player2) {
     if (IsKeyDown(KEY_D))
         player1.moveRight();
 
+    if (IsKeyPressed(KEY_TWO)) {
+        player1.selectNextItem();
+    }
+    if (IsKeyPressed(KEY_THREE)) {
+        player1.selectPreviousItem();
+    }
+
+    if (IsKeyPressed(KEY_EIGHT)) {
+        player2.selectNextItem();
+    }
+    if (IsKeyPressed(KEY_NINE)) {
+        player2.selectPreviousItem();
+    }
     if (IsKeyDown(KEY_I))
         player2.moveUp();
 
