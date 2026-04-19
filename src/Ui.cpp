@@ -53,6 +53,17 @@ void DrawLives(const Player& player1, const Player& player2) {
 }
 
 
+void DrawSelectedItemFrame(const Player& player, int startX, int startY, int spacing, int iconSize) {
+    int selectedIndex = player.getSelectedItemIndex();
+    if (selectedIndex >= 0 && selectedIndex < (int)player.inventarListe.size()) {
+        int frameX = startX + selectedIndex * spacing;
+        int frameY = startY;
+        
+        DrawRectangleLines(frameX - 2, frameY - 2, iconSize + 4, iconSize + 4, YELLOW);
+        DrawRectangleLines(frameX - 1, frameY - 1, iconSize + 2, iconSize + 2, GOLD);
+    }
+}
+
 void DrawInv(const Player& player1, const Player& player2) {
     int iconSize = 24;
     int spacing = 32;
@@ -89,6 +100,8 @@ void DrawInv(const Player& player1, const Player& player2) {
             int textWidth = MeasureText(countText, 14);
             DrawText(countText, x - textWidth/2, y + iconSize/2 - 4, 14, WHITE);
         }
+        //draw ramen
+        DrawSelectedItemFrame(player1, startX, startY, spacing, iconSize);
     }
     
     // Inventar player 2
@@ -123,5 +136,8 @@ void DrawInv(const Player& player1, const Player& player2) {
             int textWidth = MeasureText(countText, 14);
             DrawText(countText, x - textWidth/2, y + iconSize/2 - 4, 14, WHITE);
         }
+        
+        // draw ramen
+        DrawSelectedItemFrame(player2, startX, startY, spacing, iconSize);
     }
 }

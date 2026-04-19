@@ -32,6 +32,7 @@ class Player {
         double lastDamageTime;
         int facingX; 
         int facingY; 
+        int selectedItemIndex;
 
     public:
         int HP;
@@ -58,6 +59,12 @@ class Player {
         double getPositionY() const { return positionY; }
 
         //inventar
+
+        void selectNextItem();
+        void selectPreviousItem();
+        int getSelectedItemIndex() const { return selectedItemIndex; }
+        items getSelectedItem() const;
+        bool hasSelectedItem() const { return selectedItemIndex >= 0 && selectedItemIndex < (int)inventarListe.size(); }
         std::vector<inventar> inventarListe;
         void addItem(items item, int amount );
         void removeItem(items item, int amount );
