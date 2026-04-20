@@ -67,9 +67,13 @@ void Player::selectNextItem() {
         return;
     }
     
-    selectedItemIndex++;
-    if (selectedItemIndex >= (int)inventarListe.size()) {
-        selectedItemIndex = -1;  // Zurück zu "nichts ausgewählt"
+    if (selectedItemIndex == -1) {
+        selectedItemIndex = 0;
+    } else {
+        selectedItemIndex++;
+        if (selectedItemIndex >= (int)inventarListe.size()) {
+            selectedItemIndex = 0;
+        }
     }
 }
 
@@ -83,7 +87,7 @@ void Player::selectPreviousItem() {
         selectedItemIndex = (int)inventarListe.size() - 1;
     } else {
         selectedItemIndex--;
-        if (selectedItemIndex < -1) {
+        if (selectedItemIndex < 0) {
             selectedItemIndex = (int)inventarListe.size() - 1;
         }
     }
@@ -216,17 +220,17 @@ void playermoovment(Player& player1, Player& player2) {
         player1.moveRight();
 
     if (IsKeyPressed(KEY_TWO)) {
-        player1.selectNextItem();
+        player1.selectPreviousItem();
     }
     if (IsKeyPressed(KEY_THREE)) {
-        player1.selectPreviousItem();
+        player1.selectNextItem();
     }
 
     if (IsKeyPressed(KEY_EIGHT)) {
-        player2.selectNextItem();
+        player2.selectPreviousItem();
     }
     if (IsKeyPressed(KEY_NINE)) {
-        player2.selectPreviousItem();
+        player2.selectNextItem();
     }
     if (IsKeyDown(KEY_I))
         player2.moveUp();

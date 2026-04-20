@@ -12,6 +12,7 @@ enum PlayerType {
 enum items {
     stone,
     test,
+    test2,
 };
 
 struct inventar
