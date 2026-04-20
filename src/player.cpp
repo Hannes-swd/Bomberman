@@ -4,6 +4,7 @@
 #include "player.h"
 #include "textures.h"
 #include "wall.h"
+#include "map.h"
 
 Player::Player(int x, int y) : HP(10), 
 speed(0), 
@@ -29,7 +30,7 @@ void Player::setBomb() {
     double now = GetTime();
     
     for (const auto& bomb : BombList) {
-        if (now - bomb.spawnTime < 3.0) {
+        if (now - bomb.spawnTime < 2.5) {
             activeBombs++;
         }
     }
@@ -49,8 +50,13 @@ void Player::setWall() {
     }
 
     if (0 < stoneCount) {
+        int gridX = (int)((positionX + facingX * 32) / 32);
+        int gridY = (int)((positionY + facingY * 32) / 32);
+
+        if (currentMap.data[gridY][gridX] == TILE_FLOOR) {
             drawWall(positionX + facingX * 32, positionY + facingY * 32);
             removeItem(stone, 1);
+        }
     }
 }
 
@@ -242,12 +248,12 @@ void playermoovment(Player& player1, Player& player2) {
         player2.setBomb();
     }
 
-    if (IsKeyPressed(KEY_TAB))
+    if (IsKeyPressed(KEY_E))
     {
         player1.setWall();
     }
 
-    if (IsKeyPressed(KEY_Y))
+    if (IsKeyPressed(KEY_O))
     {
         player2.setWall();
     }
