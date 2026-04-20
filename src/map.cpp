@@ -90,3 +90,7 @@ void DrawMap() {
         }
     }
 }
+
+void DrawDeathScreen(){
+    DrawRectangle(0, 0, width * 32, height * 32, Fade(BLACK, 0.5f));
+}
