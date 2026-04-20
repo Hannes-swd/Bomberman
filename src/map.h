@@ -19,3 +19,4 @@ extern MapData currentMap;
 
 void InitMap();
 void DrawMap();
+void DrawDeathScreen();
