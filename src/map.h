@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+#include <string>
 #include <vector>
 
 // Enum zuerst definieren
@@ -16,7 +17,9 @@ struct MapData {
 };
 
 extern MapData currentMap;
+extern std::string textDisplay;
+extern Color textColor;
 
 void InitMap();
 void DrawMap();
-void DrawDeathScreen();
+void DrawDeathScreen(std::string color);

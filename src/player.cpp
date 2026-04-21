@@ -49,7 +49,7 @@ void Player::setWall() {
         }
     }
 
-    if (0 < stoneCount) {
+    if (0 < 0) {
         int gridX = (int)((positionX + facingX * 32) / 32);
         int gridY = (int)((positionY + facingY * 32) / 32);
 

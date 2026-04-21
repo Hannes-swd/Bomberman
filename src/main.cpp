@@ -97,7 +97,11 @@ int main(void)
                 DrawLives(player1, player2);
                 DrawInv(player1, player2);
             } else {
-                DrawDeathScreen();
+                if (player1.HP <= 0){
+                    DrawDeathScreen("RED");
+                } else {
+                    DrawDeathScreen("BLUE");
+                }
             }
 
             endCamera();
