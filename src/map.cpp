@@ -11,6 +11,8 @@
 */
 
 MapData currentMap;
+std::string textDisplay;
+Color textColor;
 
 void InitMap() {
     
@@ -91,6 +93,26 @@ void DrawMap() {
     }
 }
 
-void DrawDeathScreen(){
-    DrawRectangle(0, 0, width * 32, height * 32, Fade(BLACK, 0.5f));
+void DrawDeathScreen(std::string color){
+    if(color == "RED"){
+        textDisplay = "Rot";
+        textColor = RED;
+    } else {
+        textDisplay = "Blau";        
+        textColor = BLUE;
+    }
+
+    int fontSize = 20;
+    int totalWidth = MeasureText((textDisplay + " hat gewonnen").c_str(), fontSize);
+
+    int screenW = width * 32;
+    int screenH = height * 32;
+
+    int startX = (screenW - totalWidth) / 2;
+    int centerY = screenH / 2 - fontSize / 2;
+
+
+    DrawRectangle(0, 0, screenW, screenW, Fade(BLACK, 0.5f));
+    DrawText(textDisplay.c_str(), startX, centerY, fontSize, textColor);
+    DrawText(" hat gewonnen", startX + MeasureText(textDisplay.c_str(), fontSize), centerY, fontSize, WHITE);
 }
