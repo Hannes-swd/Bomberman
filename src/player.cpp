@@ -5,6 +5,9 @@
 #include "textures.h"
 #include "wall.h"
 #include "map.h"
+#include "mine.h"
+#include "item.h"
+
 
 Player::Player(int x, int y) : HP(10), 
 speed(0), 
@@ -254,12 +257,22 @@ void playermoovment(Player& player1, Player& player2) {
 
     if (IsKeyPressed(KEY_E))
     {
-        player1.setWall();
+        //use item player 1
+        items aktuellesitem = player1.getSelectedItem();
+        if (aktuellesitem == stone)
+            player1.setWall();
+        if (aktuellesitem == mine)
+            player1.useItem(mine);
     }
 
     if (IsKeyPressed(KEY_O))
     {
-        player2.setWall();
+        //use item player 2
+        items aktuellesitem = player2.getSelectedItem();
+        if (aktuellesitem == stone)
+            player2.setWall();
+        if (aktuellesitem == mine)
+            player2.useItem(mine);
     }
 
     if (isPlayerInExplosion(player1.getPositionX(), player1.getPositionY()))
@@ -275,4 +288,14 @@ void Player::addBombRange() {
 
 void Player::addBombCounte() {
     bombcount++;
+}
+
+void Player::useItem(items item) {
+    switch (item) {
+        case mine:
+            setmine(positionX,positionY);
+            break;
+        default:
+            break;
+    }
 }

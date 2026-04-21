@@ -11,6 +11,7 @@ enum PlayerType {
 };
 enum items {
     stone,
+    mine,
     test,
     test2,
 };
@@ -69,6 +70,7 @@ class Player {
         std::vector<inventar> inventarListe;
         void addItem(items item, int amount );
         void removeItem(items item, int amount );
+        void useItem(items item);
 };
 void playermoovment(Player& player1, Player& player2);
 
