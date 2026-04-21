@@ -24,6 +24,7 @@ add_executable(MyProgram
     src/textures.cpp
     src/item.cpp
     src/wall.cpp
+    src/mine.cpp
 )
 
 target_link_libraries(MyProgram PRIVATE raylib)
@@ -64,5 +65,8 @@ add_custom_command(TARGET MyProgram POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different 
         ${CMAKE_SOURCE_DIR}/src/img/BpombCount.png
         $<TARGET_FILE_DIR:MyProgram>/img/BpombCount.png
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different 
+        ${CMAKE_SOURCE_DIR}/src/img/mine.png
+        $<TARGET_FILE_DIR:MyProgram>/img/mine.png
     
 )

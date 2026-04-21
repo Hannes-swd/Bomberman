@@ -11,6 +11,7 @@ void loadTextures() {
     textures["stone"] = LoadTexture("img/stone.png");
     textures["BombUpgrade"] = LoadTexture("img/BombUpgrade.png");
     textures["BpombCount"] = LoadTexture("img/BpombCount.png");
+    textures["mine"] = LoadTexture("img/mine.png");
     //fehlerüberprüffung
     for (auto& pair : textures) {
         if (pair.second.id == 0) {
