@@ -1,36 +1,49 @@
+// imports
 #pragma once
 #include <iostream>
 #include <vector>
+
 #include "map.h"
 #include "player.h"
 
+
+
+// include player class
 class Player;
 
-// define functions & struct
+
+
+// define functions
 void placeBomb(int x, int y, int explosionRange, Player* owner);
 void drawBomb();
-void deleteBomb();
 void destroyWall(int gridX, int gridY, Player* owner); 
 void bombExplode(int posX, int posY, int explosionRange, Player* owner);
+void deleteBomb();
+bool isPlayerInExplosion(double playerX, double playerY);
 
+
+
+// create struct for bomb elements
 struct Bomb {
     int posX;
     int posY;
     double spawnTime;
     bool hasExploded;
-    int explosionRange;  // Individuelle Explosionsgröße für jede Bombe
+    int explosionRange;  
     Player* owner;
 };
 
-// Neue Variable für Explosionsdauer
+
+
+// create struct for bomb explosion time
 struct Explosion {
     int posX;
     int posY;
     double startTime;
 };
 
-bool isPlayerInExplosion(double playerX, double playerY);
 
-// define list - nur Deklarationen, keine Definitionen!
+
+// declare lists
 extern std::vector<Bomb> BombList;
 extern std::vector<Explosion> ExplosionList;
