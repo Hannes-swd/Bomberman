@@ -19,7 +19,8 @@ lastDamageTime(0),
 bombcount(1),
 facingX(0),
 facingY(0),
-selectedItemIndex(-1)
+selectedItemIndex(-1),
+activeBombs(0)
 {}
 
 void Player::takeDamage(int amount) {
@@ -29,11 +30,11 @@ void Player::takeDamage(int amount) {
 }
 
 void Player::setBomb() {
-    int activeBombs = 0;
+    activeBombs = 0;
     double now = GetTime();
     
     for (const auto& bomb : BombList) {
-        if (now - bomb.spawnTime < 2.5) {
+        if (now - bomb.spawnTime < 3.0 && bomb.owner == this) {
             activeBombs++;
         }
     }
