@@ -35,6 +35,7 @@ class Player {
         int facingX; 
         int facingY; 
         int selectedItemIndex;
+        int activeBombs;
 
     public:
         int HP;
