@@ -42,7 +42,7 @@ class Player {
         Player(int x, int y);
 
         void setBomb();
-        void setWall();
+        void setWall(Player& p1, Player& p2);
         void drawPlayer(PlayerType type); 
         void moveUp();
         void moveDown();

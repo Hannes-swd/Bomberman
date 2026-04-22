@@ -1,3 +1,6 @@
 #include "map.h"
+#include "player.h"
 
-void drawWall(double posX, double posY);
+class Player;
+
+void drawWall(double posX, double posY, Player& p1, Player& p2);

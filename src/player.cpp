@@ -43,8 +43,10 @@ void Player::setBomb() {
     }
 }
 
-void Player::setWall() {
+void Player::setWall(Player& p1, Player& p2) {
     int stoneCount = 0;
+    int gridX = (int)((positionX + facingX * 32) / 32);
+    int gridY = (int)((positionY + facingY * 32) / 32);
 
     for (const auto& slot : inventarListe) {
         if (slot.item == stone) {
@@ -53,12 +55,18 @@ void Player::setWall() {
         }
     }
 
+    int p1x = (int)(p1.getPositionX() / 32);
+    int p1y = (int)(p1.getPositionY() / 32);
+    int p2x = (int)(p2.getPositionX() / 32);
+    int p2y = (int)(p2.getPositionY() / 32);
+
+    if (gridX == p1x && gridY == p1y) return;
+    if (gridX == p2x && gridY == p2y) return;
+
     if (0 < stoneCount) {
-        int gridX = (int)((positionX + facingX * 32) / 32);
-        int gridY = (int)((positionY + facingY * 32) / 32);
 
         if (currentMap.data[gridY][gridX] == TILE_FLOOR) {
-            drawWall(positionX + facingX * 32, positionY + facingY * 32);
+            drawWall(positionX + facingX * 32, positionY + facingY * 32, p1, p2);
             removeItem(stone, 1);
         }
     }
@@ -261,7 +269,7 @@ void playermoovment(Player& player1, Player& player2) {
         //use item player 1
         items aktuellesitem = player1.getSelectedItem();
         if (aktuellesitem == stone)
-            player1.setWall();
+            player1.setWall(player1, player2);
         if (aktuellesitem == mine)
             player1.useItem(mine);
     }
@@ -271,7 +279,7 @@ void playermoovment(Player& player1, Player& player2) {
         //use item player 2
         items aktuellesitem = player2.getSelectedItem();
         if (aktuellesitem == stone)
-            player2.setWall();
+            player2.setWall(player1, player2);
         if (aktuellesitem == mine)
             player2.useItem(mine);
     }
