@@ -94,25 +94,41 @@ void DrawMap() {
 }
 
 void DrawDeathScreen(std::string color){
-    if(color == "RED"){
-        textDisplay = "Rot";
-        textColor = RED;
-    } else {
-        textDisplay = "Blau";        
-        textColor = BLUE;
-    }
-
-    int fontSize = 20;
-    int totalWidth = MeasureText((textDisplay + " hat gewonnen").c_str(), fontSize);
-
     int screenW = width * 32;
     int screenH = height * 32;
+    int centerX = screenW / 2;
+    int centerY = screenH / 2;
 
-    int startX = (screenW - totalWidth) / 2;
-    int centerY = screenH / 2 - fontSize / 2;
+    std::string colorText = (color == "RED") ? "SPIELER 2" : "SPIELER 1";
+    Color textColor = (color == "RED") ? RED : BLUE;
+    std::string player = (color == "RED") ? "player2win" : "player1win";
 
+    int FontSize = 16;
+    float PlayerSize = 64.0f;
 
-    DrawRectangle(0, 0, screenW, screenW, Fade(BLACK, 0.5f));
-    DrawText(textDisplay.c_str(), startX, centerY, fontSize, textColor);
-    DrawText(" hat gewonnen", startX + MeasureText(textDisplay.c_str(), fontSize), centerY, fontSize, WHITE);
+    if (width == 13) {        
+        FontSize = 16;
+        PlayerSize = 44.0f;
+    }
+    else if (width == 29){
+        FontSize = 32;
+        PlayerSize = 96.0f;
+    }
+    else if (width == 39){
+        FontSize = 48;
+        PlayerSize = 144.0f;
+    }
+
+    int colorTextW = MeasureText(colorText.c_str(), FontSize);
+    int winTextW   = MeasureText("HAT GEWONNEN", FontSize);
+
+    DrawRectangle(0, 0, screenW, screenH, Fade(BLACK, 0.6f));
+
+    float scale = PlayerSize / textures[player].width;
+    float drawX = (float)centerX - (textures[player].width * scale) / 2.0f;
+    float drawY = (float)centerY / 1.65 - (textures[player].height * scale) / 2.0f;
+    DrawTextureEx(textures[player], { drawX, drawY }, 0, scale, WHITE);
+
+    DrawText(colorText.c_str(), centerX - colorTextW / 2, centerY - FontSize, FontSize, textColor);
+    DrawText("HAT GEWONNEN",    centerX - winTextW  / 2,  centerY + 2, FontSize,   WHITE);
 }

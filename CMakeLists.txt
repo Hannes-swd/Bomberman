@@ -47,6 +47,13 @@ add_custom_command(TARGET MyProgram POST_BUILD
         $<TARGET_FILE_DIR:MyProgram>/img/player2.png
 
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_SOURCE_DIR}/src/img/player1win.png
+        $<TARGET_FILE_DIR:MyProgram>/img/player1win.png
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_SOURCE_DIR}/src/img/player2win.png
+        $<TARGET_FILE_DIR:MyProgram>/img/player2win.png
+
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
         ${CMAKE_SOURCE_DIR}/src/img/bomb.png
         $<TARGET_FILE_DIR:MyProgram>/img/bomb.png
 
