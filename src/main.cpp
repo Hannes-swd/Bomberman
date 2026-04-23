@@ -36,7 +36,7 @@ int main(void)
     int lastWidth = GetScreenWidth();
     int lastHeight = GetScreenHeight();
     managecam();
-
+    
     // Main game loop
     while (!WindowShouldClose()) 
     {
@@ -86,6 +86,7 @@ int main(void)
             DrawItems();
             drawBomb();
             DrawMine();
+            explodemine(player1, player2);
 
             player1.drawPlayer(PLAYER_ONE);
             player2.drawPlayer(PLAYER_TWO);

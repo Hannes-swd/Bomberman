@@ -302,7 +302,9 @@ void Player::addBombCounte() {
 void Player::useItem(items item) {
     switch (item) {
         case mine:
-            setmine(positionX,positionY);
+            if (setmine(positionX, positionY, *this)) {
+                removeItem(mine, 1);
+            }
             break;
         default:
             break;
