@@ -4,6 +4,7 @@
 #include "map.h"
 #include "mine.h"
 #include "textures.h"
+#include "item.h"
 
 std::vector<minen> mineList;
 
@@ -18,11 +19,17 @@ void setmine(int x ,int y) {
     mineList.push_back(newmine);
 }
 
-void Drawmiome() {
+void DrawMine() {
     for (const auto& mine : mineList) {
         float scale = 26.0f / textures["mine"].width;
         float drawX = (float)mine.posx - (textures["mine"].width * scale) / 2.0f;
         float drawY = (float)mine.posy - (textures["mine"].height * scale) / 2.0f;
         DrawTextureEx(textures["mine"], { drawX + 16, drawY + 16 }, 0, scale, WHITE);
     }
+}
+
+void dropMine(int x, int y) {
+    int GridX = (int)(x / 32);
+    int GridY = (int)(y / 32);
+    placeItem(MineItem, GridX, GridY);
 }

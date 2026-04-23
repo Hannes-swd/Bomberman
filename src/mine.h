@@ -14,4 +14,5 @@ extern std::vector<minen> mineList;
 
 
 void setmine(int x, int y);
-void Drawmiome();
+void DrawMine();
+void dropMine(int x, int y);
