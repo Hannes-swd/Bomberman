@@ -6,6 +6,7 @@
 #include "Ui.h"
 #include "textures.h"
 #include "item.h"
+#include "mine.h"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -84,6 +85,7 @@ int main(void)
 
             DrawItems();
             drawBomb();
+            DrawMine();
 
             player1.drawPlayer(PLAYER_ONE);
             player2.drawPlayer(PLAYER_TWO);

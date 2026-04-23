@@ -7,6 +7,7 @@ void DrawItems();
 enum Items {
     BombUpgrade,
     Bombcount,
+    MineItem,
 };
 struct ItemsOnGround  {
     Items item;

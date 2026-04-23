@@ -9,15 +9,23 @@ std::vector<ItemsOnGround> ItemsOngroundList;
 
 void DrawItems() {
     for (const auto& item : ItemsOngroundList) {
-        float scale = 26.0f / textures["BombUpgrade"].width;
-        float drawX = (float)item.posx - (textures["BombUpgrade"].width * scale) / 2.0f;
-        float drawY = (float)item.posy - (textures["BombUpgrade"].height * scale) / 2.0f;
+        float scale;
+        Texture2D tex;
         
         if (item.item == BombUpgrade) {
-            DrawTextureEx(textures["BombUpgrade"], { drawX + 16, drawY + 16 }, 0, scale, WHITE);
+            tex = textures["BombUpgrade"];
+            scale = 26.0f / tex.width;
         } else if (item.item == Bombcount) {
-            DrawTextureEx(textures["BpombCount"], { drawX + 16, drawY + 16 }, 0, scale, WHITE);
+            tex = textures["BpombCount"];
+            scale = 26.0f / tex.width;
+        } else if (item.item == MineItem) {
+            tex = textures["mine"];
+            scale = 26.0f / tex.width;
         }
+        
+        float drawX = (float)item.posx - (tex.width * scale) / 2.0f;
+        float drawY = (float)item.posy - (tex.height * scale) / 2.0f;
+        DrawTextureEx(tex, { drawX + 16, drawY + 16 }, 0, scale, WHITE);
     }
 }
 
@@ -46,6 +54,9 @@ void colecktItem(Player& player1, Player& player2) {
                 case Bombcount:
                     player1.addBombCounte();
                     break;
+                case MineItem:
+                    player1.addItem(mine, 1);
+                    break;
             }
             
             ItemsOngroundList.erase(ItemsOngroundList.begin() + i);
@@ -63,6 +74,9 @@ void colecktItem(Player& player1, Player& player2) {
                     break;
                 case Bombcount:
                     player2.addBombCounte();
+                    break;
+                case MineItem:
+                    player2.addItem(mine, 1);
                     break;
             }
             

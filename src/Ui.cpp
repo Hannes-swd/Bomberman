@@ -91,6 +91,10 @@ void DrawInv(const Player& player1, const Player& player2) {
             if (slot.item == stone) {
                 Rectangle srcRect = { 0, 0, (float)textures["stone"].width, (float)textures["stone"].height };
                 DrawTexturePro(textures["stone"], srcRect, destRect, {0, 0}, 0, WHITE);
+            }
+            else if (slot.item == mine) {
+                Rectangle srcRect = { 0, 0, (float)textures["mine"].width, (float)textures["mine"].height };
+                DrawTexturePro(textures["mine"], srcRect, destRect, {0, 0}, 0, WHITE);
             } else {
                 DrawRectangle(destRect.x, destRect.y, iconSize, iconSize, ORANGE);
             }
@@ -127,6 +131,9 @@ void DrawInv(const Player& player1, const Player& player2) {
             if (slot.item == stone) {
                 Rectangle srcRect = { 0, 0, (float)textures["stone"].width, (float)textures["stone"].height };
                 DrawTexturePro(textures["stone"], srcRect, destRect, {0, 0}, 0, WHITE);
+            }else if (slot.item == mine) {
+                Rectangle srcRect = { 0, 0, (float)textures["mine"].width, (float)textures["mine"].height };
+                DrawTexturePro(textures["mine"], srcRect, destRect, {0, 0}, 0, WHITE);
             } else {
                 DrawRectangle(destRect.x, destRect.y, iconSize, iconSize, ORANGE);
             }
