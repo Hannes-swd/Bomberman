@@ -13,6 +13,12 @@ void loadTextures() {
     textures["stone"] = LoadTexture("img/stone.png");
     textures["BombUpgrade"] = LoadTexture("img/BombUpgrade.png");
     textures["BpombCount"] = LoadTexture("img/BpombCount.png");
+    textures["remotebombdetonator"] = LoadTexture("img/remotebombdetonator.png");
+    textures["remotebomb"] = LoadTexture("img/remotebomb.png");
+
+
+    //remotebomb
+
     textures["mine"] = LoadTexture("img/mine.png");
     //fehlerüberprüffung
     for (auto& pair : textures) {

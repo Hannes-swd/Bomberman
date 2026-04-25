@@ -7,6 +7,8 @@
 #include "map.h"
 #include "mine.h"
 #include "item.h"
+#include "remoteBomb.h"
+
 
 
 Player::Player(int x, int y) : HP(10), 
@@ -272,6 +274,8 @@ void playermoovment(Player& player1, Player& player2) {
             player1.setWall(player1, player2);
         if (aktuellesitem == mine)
             player1.useItem(mine);
+        if (aktuellesitem == remotebomb)
+            player1.useItem(remotebomb);
     }
 
     if (IsKeyPressed(KEY_O))
@@ -282,6 +286,9 @@ void playermoovment(Player& player1, Player& player2) {
             player2.setWall(player1, player2);
         if (aktuellesitem == mine)
             player2.useItem(mine);
+        if (aktuellesitem == remotebomb)
+            player2.useItem(remotebomb);
+            
     }
 
     if (isPlayerInExplosion(player1.getPositionX(), player1.getPositionY()))
@@ -306,7 +313,19 @@ void Player::useItem(items item) {
                 removeItem(mine, 1);
             }
             break;
+        case remotebomb:
+            placeremoteBomb((int)positionX, (int)positionY, this);
+            removeItem(remotebomb, 1);
+            break;
         default:
             break;
     }
+}
+bool Player::hasItem(items item) const {
+    for (const auto& slot : inventarListe) {
+        if (slot.item == item && slot.count > 0) {
+            return true;
+        }
+    }
+    return false;
 }

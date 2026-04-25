@@ -12,8 +12,8 @@ enum PlayerType {
 enum items {
     stone,
     mine,
-    test,
-    test2,
+    remotebomb,
+    remotebombdetonator,
 };
 
 struct inventar
@@ -72,6 +72,7 @@ class Player {
         void addItem(items item, int amount );
         void removeItem(items item, int amount );
         void useItem(items item);
+        bool hasItem(items item) const;
 };
 void playermoovment(Player& player1, Player& player2);
 
