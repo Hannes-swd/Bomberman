@@ -11,6 +11,24 @@
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
+/*
+IDEEN LISTE
+- remote bomb
+- timer
+- upgrades
+- schild
+- power ups
+- nägel(bleiben bis was explodiert(verlangsamen spieler)
+- rauchbombe
+- eisbombe (fiert gegner ein)
+- giftbombe
+- Heiltrank
+- geist (kan durch wende gehen)
+- werfbombe
+- fernglas (zoomt auf spieler sodas gegner sich nicht siet)
+- gegnerkope (verwirrt)
+- schaden wen spieler in einem ist
+*/
 int main(void)
 {
     // Initialization
