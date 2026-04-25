@@ -9,6 +9,7 @@
 #include "map.h"
 #include "item.h"
 #include "mine.h"
+#include "remoteBomb.h"
 #include <algorithm>
 
 
@@ -86,6 +87,8 @@ void destroyWall(int gridX, int gridY, Player* owner) {
                 dropMine(gridX * 32, gridY * 32);
             else if (rand() % 100 < 25)
                 owner->addItem(stone, 1);
+            else if (rand() % 100 < 100)
+                placeItem(remotebombItem, gridX, gridY);
         }
     }
 }

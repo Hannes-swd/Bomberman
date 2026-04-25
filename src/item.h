@@ -8,6 +8,10 @@ enum Items {
     BombUpgrade,
     Bombcount,
     MineItem,
+
+    //remotebomb
+    remotebombItem,
+    remotebombdetonatorItem,
 };
 struct ItemsOnGround  {
     Items item;

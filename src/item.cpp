@@ -21,6 +21,9 @@ void DrawItems() {
         } else if (item.item == MineItem) {
             tex = textures["mine"];
             scale = 26.0f / tex.width;
+        } else if (item.item == remotebombItem) {
+            tex = textures["remotebomb"];
+            scale = 26.0f / tex.width;
         }
         
         float drawX = (float)item.posx - (tex.width * scale) / 2.0f;
@@ -57,6 +60,9 @@ void colecktItem(Player& player1, Player& player2) {
                 case MineItem:
                     player1.addItem(mine, 1);
                     break;
+                case remotebombItem:
+                    player1.addItem(remotebomb, 1);
+                    break;
             }
             
             ItemsOngroundList.erase(ItemsOngroundList.begin() + i);
@@ -77,6 +83,9 @@ void colecktItem(Player& player1, Player& player2) {
                     break;
                 case MineItem:
                     player2.addItem(mine, 1);
+                    break;
+                case remotebombItem:
+                    player2.addItem(remotebomb, 1);
                     break;
             }
             

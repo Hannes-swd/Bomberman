@@ -7,6 +7,7 @@
 #include "textures.h"
 #include "item.h"
 #include "mine.h"
+#include "remoteBomb.h"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -28,6 +29,7 @@ IDEEN LISTE
 - fernglas (zoomt auf spieler sodas gegner sich nicht siet)
 - gegnerkope (verwirrt)
 - schaden wen spieler in einem ist
+- lootboxen
 */
 int main(void)
 {
@@ -104,6 +106,8 @@ int main(void)
             DrawItems();
             drawBomb();
             DrawMine();
+            drawremoteBomb();
+            
             explodemine(player1, player2);
 
             player1.drawPlayer(PLAYER_ONE);
