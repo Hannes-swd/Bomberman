@@ -42,3 +42,19 @@ void drawremoteBomb() {
         DrawTextureEx(textures["remotebomb"], { drawX + 16, drawY + 16 }, 0, scale, WHITE);
     }
 }
+
+void explodeRemoteBomb(Player* owner) {
+    for (auto& bomb : remoteBombList) {
+        if (bomb.owner == owner) {
+            bombExplode(bomb.posx, bomb.posy, owner->getBombRange(), owner);
+        }
+    }
+    
+    remoteBombList.erase(
+        std::remove_if(remoteBombList.begin(), remoteBombList.end(),
+            [owner](const remoteBomb& b) {
+                return b.owner == owner;
+            }),
+        remoteBombList.end()
+    );
+}
