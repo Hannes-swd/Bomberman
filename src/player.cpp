@@ -276,6 +276,8 @@ void playermoovment(Player& player1, Player& player2) {
             player1.useItem(mine);
         if (aktuellesitem == remotebomb)
             player1.useItem(remotebomb);
+        if (aktuellesitem == remotebombdetonator)
+            player1.useItem(remotebombdetonator);
     }
 
     if (IsKeyPressed(KEY_O))
@@ -288,6 +290,8 @@ void playermoovment(Player& player1, Player& player2) {
             player2.useItem(mine);
         if (aktuellesitem == remotebomb)
             player2.useItem(remotebomb);
+        if (aktuellesitem == remotebombdetonator)
+            player2.useItem(remotebombdetonator);
             
     }
 
@@ -316,6 +320,10 @@ void Player::useItem(items item) {
         case remotebomb:
             placeremoteBomb((int)positionX, (int)positionY, this);
             removeItem(remotebomb, 1);
+            break;
+        case remotebombdetonator:
+            explodeRemoteBomb(this);
+            removeItem(remotebombdetonator, 1);
             break;
         default:
             break;

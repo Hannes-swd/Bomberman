@@ -11,3 +11,4 @@ extern std::vector<remoteBomb> remoteBombList;
 
 void placeremoteBomb(int x, int y,Player* owner);
 void drawremoteBomb();
+void explodeRemoteBomb(Player* owner);
