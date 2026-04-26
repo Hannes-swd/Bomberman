@@ -24,6 +24,9 @@ void DrawItems() {
         } else if (item.item == remotebombItem) {
             tex = textures["remotebomb"];
             scale = 26.0f / tex.width;
+        } else if (item.item == HealingPotionItem) {
+            tex = textures["HealingPotion"];
+            scale = 26.0f / tex.width;
         }
         
         float drawX = (float)item.posx - (tex.width * scale) / 2.0f;
@@ -63,6 +66,9 @@ void colecktItem(Player& player1, Player& player2) {
                 case remotebombItem:
                     player1.addItem(remotebomb, 1);
                     break;
+                case HealingPotionItem:
+                    player1.addItem(HealingPotion, 1);
+                    break;
             }
             
             ItemsOngroundList.erase(ItemsOngroundList.begin() + i);
@@ -86,6 +92,9 @@ void colecktItem(Player& player1, Player& player2) {
                     break;
                 case remotebombItem:
                     player2.addItem(remotebomb, 1);
+                    break;
+                case HealingPotionItem:
+                    player2.addItem(HealingPotion, 1);
                     break;
             }
             

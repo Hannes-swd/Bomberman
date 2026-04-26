@@ -87,7 +87,9 @@ void destroyWall(int gridX, int gridY, Player* owner) {
                 dropMine(gridX * 32, gridY * 32);
             else if (rand() % 100 < 5)
                 placeItem(remotebombItem, gridX, gridY);
-            else if (rand() % 100 < 25)
+            else if (rand() % 100 < 5)
+                placeItem(HealingPotionItem, gridX, gridY);
+            else if (rand() % 100 < 5)
                 owner->addItem(stone, 1);
         }
     }

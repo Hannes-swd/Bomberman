@@ -15,6 +15,7 @@ void loadTextures() {
     textures["BpombCount"] = LoadTexture("img/BpombCount.png");
     textures["remotebombdetonator"] = LoadTexture("img/remotebombdetonator.png");
     textures["remotebomb"] = LoadTexture("img/remotebomb.png");
+    textures["HealingPotion"] = LoadTexture("img/HealingPotion.png");
 
 
     //remotebomb

@@ -4,7 +4,7 @@
 
 
 void DrawItems();
-enum Items {
+enum Items { // items on ground
     BombUpgrade,
     Bombcount,
     MineItem,
@@ -12,6 +12,8 @@ enum Items {
     //remotebomb
     remotebombItem,
     remotebombdetonatorItem,
+
+    HealingPotionItem,
 };
 struct ItemsOnGround  {
     Items item;

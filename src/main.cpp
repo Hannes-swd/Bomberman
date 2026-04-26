@@ -22,7 +22,6 @@ IDEEN LISTE
 - rauchbombe
 - eisbombe (fiert gegner ein)
 - giftbombe
-- Heiltrank
 - geist (kan durch wende gehen)
 - werfbombe
 - fernglas (zoomt auf spieler sodas gegner sich nicht siet)
