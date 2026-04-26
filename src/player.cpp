@@ -8,6 +8,7 @@
 #include "mine.h"
 #include "item.h"
 #include "remoteBomb.h"
+#include "HealingPotion.h"
 
 
 
@@ -278,6 +279,10 @@ void playermoovment(Player& player1, Player& player2) {
             player1.useItem(remotebomb);
         if (aktuellesitem == remotebombdetonator)
             player1.useItem(remotebombdetonator);
+        if (aktuellesitem == HealingPotion) {
+            if (player1.HP != 10)
+                player1.useItem(HealingPotion);
+        }
     }
 
     if (IsKeyPressed(KEY_O))
@@ -292,6 +297,11 @@ void playermoovment(Player& player1, Player& player2) {
             player2.useItem(remotebomb);
         if (aktuellesitem == remotebombdetonator)
             player2.useItem(remotebombdetonator);
+        if (aktuellesitem == HealingPotion) {
+            if (player2.HP != 10)
+                player2.useItem(HealingPotion);
+        }
+            
             
     }
 
@@ -325,6 +335,9 @@ void Player::useItem(items item) {
             explodeRemoteBomb(this);
             removeItem(remotebombdetonator, 1);
             break;
+        case HealingPotion:
+            drickHealingPotion(this);
+        break;
         default:
             break;
     }

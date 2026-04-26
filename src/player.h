@@ -9,11 +9,13 @@ enum PlayerType {
     PLAYER_ONE,
     PLAYER_TWO
 };
-enum items {
+enum items { //inventary
     stone,
     mine,
     remotebomb,
     remotebombdetonator,
+
+    HealingPotion,
 };
 
 struct inventar
