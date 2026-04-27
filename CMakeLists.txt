@@ -27,8 +27,8 @@ add_executable(MyProgram
     src/mine.cpp
     src/remoteBomb.cpp
     src/HealingPotion.cpp
+    src/gost.cpp
 )
-
 target_link_libraries(MyProgram PRIVATE raylib)
 target_include_directories(MyProgram PRIVATE ${raylib_SOURCE_DIR}/src)
 
@@ -86,5 +86,8 @@ add_custom_command(TARGET MyProgram POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different 
         ${CMAKE_SOURCE_DIR}/src/img/HealingPotion.png
         $<TARGET_FILE_DIR:MyProgram>/img/HealingPotion.png
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different 
+        ${CMAKE_SOURCE_DIR}/src/img/gost.png
+        $<TARGET_FILE_DIR:MyProgram>/img/gost.png
     
 )

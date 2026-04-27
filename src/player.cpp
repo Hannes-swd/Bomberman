@@ -24,7 +24,8 @@ facingX(0),
 facingY(0),
 selectedItemIndex(-1),
 activeBombs(0),
-ghost(false)
+ghost(false),
+ghostEndTime(0.0f)
 {}
 
 void Player::takeDamage(int amount) {
@@ -351,4 +352,15 @@ bool Player::hasItem(items item) const {
         }
     }
     return false;
+}
+
+void Player::switchgostmode() {
+    ghost = true;
+    ghostEndTime = GetTime() + 10.0f;  // 10 Sekunde aktiv
+}
+
+void Player::updateGhostMode() {
+    if (ghost && GetTime() >= ghostEndTime) {
+        ghost = false;
+    }
 }

@@ -14,6 +14,7 @@ enum Items { // items on ground
     remotebombdetonatorItem,
 
     HealingPotionItem,
+    GhostItem,
 };
 struct ItemsOnGround  {
     Items item;

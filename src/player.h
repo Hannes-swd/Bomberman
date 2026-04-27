@@ -39,6 +39,7 @@ class Player {
         int selectedItemIndex;
         int activeBombs;
         bool ghost;
+        float ghostEndTime;
 
     public:
         int HP;
@@ -76,6 +77,11 @@ class Player {
         void removeItem(items item, int amount );
         void useItem(items item);
         bool hasItem(items item) const;
+
+        //gost mode
+        void switchgostmode();
+        void updateGhostMode();
+        bool isGhostActive() const { return ghost; }
 };
 void playermoovment(Player& player1, Player& player2);
 

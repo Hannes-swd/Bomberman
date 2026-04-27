@@ -22,7 +22,6 @@ IDEEN LISTE
 - rauchbombe
 - eisbombe (fiert gegner ein)
 - giftbombe
-- geist (kan durch wende gehen)
 - werfbombe
 - fernglas (zoomt auf spieler sodas gegner sich nicht siet)
 - gegnerkope (verwirrt)
@@ -90,6 +89,9 @@ int main(void)
         }
         //coleckts dropped items
         colecktItem(player1, player2);
+
+        player1.updateGhostMode();
+        player2.updateGhostMode();
         // Draw
         //----------------------------------------------------------------------------------
         BeginDrawing();
