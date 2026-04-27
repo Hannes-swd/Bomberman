@@ -27,6 +27,9 @@ void DrawItems() {
         } else if (item.item == HealingPotionItem) {
             tex = textures["HealingPotion"];
             scale = 26.0f / tex.width;
+        } else if (item.item == GhostItem) {
+            tex = textures["gost"];
+            scale = 26.0f / tex.width;
         }
         
         float drawX = (float)item.posx - (tex.width * scale) / 2.0f;
@@ -69,6 +72,9 @@ void colecktItem(Player& player1, Player& player2) {
                 case HealingPotionItem:
                     player1.addItem(HealingPotion, 1);
                     break;
+                case GhostItem:
+                    player1.switchgostmode();  
+                    break;
             }
             
             ItemsOngroundList.erase(ItemsOngroundList.begin() + i);
@@ -95,6 +101,9 @@ void colecktItem(Player& player1, Player& player2) {
                     break;
                 case HealingPotionItem:
                     player2.addItem(HealingPotion, 1);
+                    break;
+                case GhostItem:
+                    player2.switchgostmode();  
                     break;
             }
             
