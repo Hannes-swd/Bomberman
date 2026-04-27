@@ -23,7 +23,8 @@ bombcount(1),
 facingX(0),
 facingY(0),
 selectedItemIndex(-1),
-activeBombs(0)
+activeBombs(0),
+ghost(false)
 {}
 
 void Player::takeDamage(int amount) {
@@ -216,7 +217,8 @@ bool Player::checkGround(double x, double y) {
 
     for (auto& c : corners) {
         if (c[1] < 0 || c[0] < 0) return false; // corner check
-        if (currentMap.data[c[1]][c[0]] != TILE_FLOOR) return false; // floor check
+        if (currentMap.data[c[1]][c[0]] != TILE_FLOOR && !ghost) return false; // floor check
+        if (currentMap.data[c[1]][c[0]] == TILE_BEDROCK && ghost) return false; // bedrock check
     }
     return true;
 }
