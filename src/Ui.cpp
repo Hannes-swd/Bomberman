@@ -2,12 +2,13 @@
 #include "player.h"
 #include "textures.h"
 
+char timerText[20];
+
 void DrawTimer() {
     double time = GetTime();
     int minutes = (int)(time / 60);
     int seconds = (int)(time) % 60;
 
-    char timerText[20];
     sprintf_s(timerText, sizeof(timerText), "%02d:%02d", minutes, seconds);
 
     DrawText(timerText, 6, 6, 20, WHITE);

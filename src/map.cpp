@@ -4,7 +4,7 @@
 #include "globals.h"
 #include "map.h"
 #include "textures.h"
-
+#include "ui.h"
 
 
 // define global variables
@@ -142,6 +142,7 @@ void DrawDeathScreen(std::string color){
     // text center
     int colorTextW = MeasureText(colorText.c_str(), FontSize);
     int winTextW   = MeasureText("HAT GEWONNEN", FontSize);
+    int textWidth = MeasureText(timerText, FontSize); // timer text width
 
     // dark screen
     DrawRectangle(0, 0, screenW, screenH, Fade(BLACK, 0.6f));
@@ -154,5 +155,7 @@ void DrawDeathScreen(std::string color){
 
     // text
     DrawText(colorText.c_str(), centerX - colorTextW / 2, centerY - FontSize, FontSize, textColor);
-    DrawText("HAT GEWONNEN",    centerX - winTextW  / 2,  centerY + 2, FontSize,   WHITE);
+    DrawText("HAT GEWONNEN", centerX - winTextW  / 2,  centerY + 2, FontSize, WHITE);
+    DrawText(timerText,  centerX - textWidth / 2, centerY + FontSize + 12, FontSize, WHITE);
+
 }
