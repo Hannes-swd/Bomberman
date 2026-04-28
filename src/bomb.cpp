@@ -10,7 +10,7 @@
 #include "item.h"
 #include "mine.h"
 #include "remoteBomb.h"
-#include <algorithm>
+#include "smokeBomb.h"
 
 
 
@@ -87,6 +87,8 @@ void destroyWall(int gridX, int gridY, Player* owner) {
                 dropMine(gridX * 32, gridY * 32);
             else if (rand() % 100 < 5)
                 placeItem(remotebombItem, gridX, gridY);
+            else if (rand() % 100 < 5)
+                placeItem(smokeBombItem, gridX, gridY);
             else if (rand() % 100 < 5)
                 placeItem(HealingPotionItem, gridX, gridY);
             else if (rand() % 100 < 2)

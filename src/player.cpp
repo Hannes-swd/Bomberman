@@ -9,6 +9,7 @@
 #include "item.h"
 #include "remoteBomb.h"
 #include "HealingPotion.h"
+#include "smokeBomb.h"
 
 
 
@@ -285,6 +286,8 @@ void playermoovment(Player& player1, Player& player2) {
         if (aktuellesitem == HealingPotion) {
             if (player1.HP != 10)
                 player1.useItem(HealingPotion);
+        } if (aktuellesitem == smokeBomb) {
+            player1.useItem(smokeBomb);
         }
     }
 
@@ -303,10 +306,11 @@ void playermoovment(Player& player1, Player& player2) {
         if (aktuellesitem == HealingPotion) {
             if (player2.HP != 10)
                 player2.useItem(HealingPotion);
+        } if (aktuellesitem == smokeBomb) {
+            player2.useItem(smokeBomb);
         }
-            
-            
     }
+            
 
     if (isPlayerInExplosion(player1.getPositionX(), player1.getPositionY()))
         player1.takeDamage(2);
@@ -340,6 +344,10 @@ void Player::useItem(items item) {
             break;
         case HealingPotion:
             drickHealingPotion(this);
+        case smokeBomb:
+            placeSmokeBomb((int)positionX, (int)positionY, this);
+            removeItem(smokeBomb, 1);
+            break;
         break;
         default:
             break;

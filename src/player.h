@@ -16,6 +16,7 @@ enum items { //inventary
     remotebombdetonator,
 
     HealingPotion,
+    smokeBomb,
 };
 
 struct inventar

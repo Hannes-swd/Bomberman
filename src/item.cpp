@@ -5,6 +5,7 @@
 #include "map.h"
 #include <algorithm>
 #include "item.h"
+#include "smokeBomb.h"
 std::vector<ItemsOnGround> ItemsOngroundList;
 
 void DrawItems() {
@@ -29,6 +30,9 @@ void DrawItems() {
             scale = 26.0f / tex.width;
         } else if (item.item == GhostItem) {
             tex = textures["gost"];
+            scale = 26.0f / tex.width;
+        } else if (item.item == smokeBombItem) {
+            tex = textures["smokebomb"];
             scale = 26.0f / tex.width;
         }
         
@@ -75,6 +79,9 @@ void colecktItem(Player& player1, Player& player2) {
                 case GhostItem:
                     player1.switchgostmode();  
                     break;
+                case smokeBombItem:
+                    player1.addItem(smokeBomb, 1);
+                    break;
             }
             
             ItemsOngroundList.erase(ItemsOngroundList.begin() + i);
@@ -104,6 +111,9 @@ void colecktItem(Player& player1, Player& player2) {
                     break;
                 case GhostItem:
                     player2.switchgostmode();  
+                    break;
+                case smokeBombItem:
+                    player2.addItem(smokeBomb, 1);
                     break;
             }
             
