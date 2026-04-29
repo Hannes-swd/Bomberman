@@ -159,6 +159,13 @@ void DrawInv(const Player& player1, const Player& player2) {
             }else if (slot.item == HealingPotion) {
                 Rectangle srcRect = { 0, 0, (float)textures["HealingPotion"].width, (float)textures["HealingPotion"].height };
                 DrawTexturePro(textures["HealingPotion"], srcRect, destRect, {0, 0}, 0, WHITE);
+            }else if (slot.item == remotebomb) {
+                Rectangle srcRect = { 0, 0, (float)textures["remotebomb"].width, (float)textures["remotebomb"].height };
+                DrawTexturePro(textures["remotebomb"], srcRect, destRect, {0, 0}, 0, WHITE);
+            }
+            else if (slot.item == remotebombdetonator) {
+                Rectangle srcRect = { 0, 0, (float)textures["remotebombdetonator"].width, (float)textures["remotebombdetonator"].height };
+                DrawTexturePro(textures["remotebombdetonator"], srcRect, destRect, {0, 0}, 0, WHITE);
             } else {
                 DrawRectangle(destRect.x, destRect.y, iconSize, iconSize, ORANGE);
             }
