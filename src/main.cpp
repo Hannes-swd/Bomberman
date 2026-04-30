@@ -8,6 +8,7 @@
 #include "item.h"
 #include "mine.h"
 #include "remoteBomb.h"
+#include "smokeBomb.h"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -107,11 +108,18 @@ int main(void)
             drawBomb();
             DrawMine();
             drawremoteBomb();
+            drawSmokeBomb();
+            drawSmokeClouds();
+            updateAllSmokes();
+
             
             explodemine(player1, player2);
 
             player1.drawPlayer(PLAYER_ONE);
             player2.drawPlayer(PLAYER_TWO);
+
+            drawSmokeClouds();
+            updateAllSmokes();
 
             if(player1.HP > 0 && player2.HP > 0){
                 playermoovment(player1, player2);
