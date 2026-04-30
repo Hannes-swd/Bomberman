@@ -117,6 +117,9 @@ void DrawInv(const Player& player1, const Player& player2) {
             }else if (slot.item == HealingPotion) {
                 Rectangle srcRect = { 0, 0, (float)textures["HealingPotion"].width, (float)textures["HealingPotion"].height };
                 DrawTexturePro(textures["HealingPotion"], srcRect, destRect, {0, 0}, 0, WHITE);
+            } else if (slot.item == smokeBomb) {
+                Rectangle srcRect = { 0, 0, (float)textures["smokebomb"].width, (float)textures["smokebomb"].height };
+                DrawTexturePro(textures["smokebomb"], srcRect, destRect, {0, 0}, 0, WHITE);
             } else {
                 DrawRectangle(destRect.x, destRect.y, iconSize, iconSize, ORANGE);
             }
@@ -166,6 +169,9 @@ void DrawInv(const Player& player1, const Player& player2) {
             else if (slot.item == remotebombdetonator) {
                 Rectangle srcRect = { 0, 0, (float)textures["remotebombdetonator"].width, (float)textures["remotebombdetonator"].height };
                 DrawTexturePro(textures["remotebombdetonator"], srcRect, destRect, {0, 0}, 0, WHITE);
+            } else if (slot.item == smokeBomb) {
+                Rectangle srcRect = { 0, 0, (float)textures["smokebomb"].width, (float)textures["smokebomb"].height };
+                DrawTexturePro(textures["smokebomb"], srcRect, destRect, {0, 0}, 0, WHITE);
             } else {
                 DrawRectangle(destRect.x, destRect.y, iconSize, iconSize, ORANGE);
             }
