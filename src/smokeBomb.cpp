@@ -59,8 +59,8 @@ void drawSmokeClouds() {
             smokeColor.a = (unsigned char)(220 * intensity);
             
             // Rauchbereich - 3x3 Grid Bereich (wie bei Explosion)
-            for (int offsetX = -1; offsetX <= 1; offsetX++) {
-                for (int offsetY = -1; offsetY <= 1; offsetY++) {
+            for (int offsetX = -2; offsetX <= 2; offsetX++) {
+                for (int offsetY = -2; offsetY <= 2; offsetY++) {
                     int currentX = cloud.posx + (offsetX * 32);
                     int currentY = cloud.posy + (offsetY * 32);
                     
@@ -70,9 +70,9 @@ void drawSmokeClouds() {
                     
                     // Rauchintensität für Randbereiche reduzieren
                     float cellIntensity = intensity;
-                    if (abs(offsetX) == 1 && abs(offsetY) == 1) {
+                    if (abs(offsetX) == 2 && abs(offsetY) == 2) {
                         cellIntensity = intensity * 0.7f;  // Ecken etwas schwächer
-                    } else if (abs(offsetX) == 1 || abs(offsetY) == 1) {
+                    } else if (abs(offsetX) == 2 || abs(offsetY) == 2) {
                         cellIntensity = intensity * 0.85f; // Seiten etwas schwächer
                     }
                     
