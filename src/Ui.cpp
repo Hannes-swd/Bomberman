@@ -9,7 +9,7 @@ void DrawTimer() {
     int minutes = (int)(time / 60);
     int seconds = (int)(time) % 60;
 
-    sprintf_s(timerText, sizeof(timerText), "%02d:%02d", minutes, seconds);
+    snprintf(timerText, sizeof(timerText), "%02d:%02d", minutes, seconds);
 
     DrawText(timerText, 6, 6, 20, WHITE);
 }
@@ -125,7 +125,7 @@ void DrawInv(const Player& player1, const Player& player2) {
             }
             
             char countText[10];
-            sprintf_s(countText, sizeof(countText), "%d", slot.count);
+            snprintf(countText, sizeof(countText), "%d", slot.count);
             int textWidth = MeasureText(countText, 14);
             DrawText(countText, x - textWidth/2, y + iconSize/2 - 4, 14, WHITE);
         }
@@ -177,7 +177,7 @@ void DrawInv(const Player& player1, const Player& player2) {
             }
             
             char countText[10];
-            sprintf_s(countText, sizeof(countText), "%d", slot.count);
+            snprintf(countText, sizeof(countText), "%d", slot.count);
             int textWidth = MeasureText(countText, 14);
             DrawText(countText, x - textWidth/2, y + iconSize/2 - 4, 14, WHITE);
         }
