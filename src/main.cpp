@@ -118,9 +118,6 @@ int main(void)
             player1.drawPlayer(PLAYER_ONE);
             player2.drawPlayer(PLAYER_TWO);
 
-            drawSmokeClouds();
-            updateAllSmokes();
-
             if(player1.HP > 0 && player2.HP > 0){
                 playermoovment(player1, player2);
                 DrawLives(player1, player2);
@@ -133,6 +130,9 @@ int main(void)
                     DrawDeathScreen("BLUE");
                 }
             }
+
+            drawSmokeClouds();
+            updateAllSmokes();
 
 
             endCamera();
