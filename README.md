@@ -23,7 +23,7 @@ Play against your friend on **a single keyboard** - perfect for LAN parties or c
 | **Remote Bomb** | ![RemoteBomb](src/img/remotebomb.png) | Placeable, explodes only via detonator |
 | **Detonator** | ![Detonator](src/img/remotebombdetonator.png) | Detonates all your remote bombs |
 | **Healing Potion** | ![Healing](src/img/HealingPotion.png) | Restores 10 HP |
-| **Ghost Mode** | ![Ghost](src/img/gost.png) | 10 seconds: invisible + walk through walls |
+| **Ghost Mode** | ![Ghost](src/img/gost.png) | 10 seconds: walk through walls |
 | **smokeBomb** | ![smokeBomb](src/img/smokeBomb.png) | makes a smoke claude |
 
 ## 🎮 Controls
