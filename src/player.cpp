@@ -202,10 +202,6 @@ int Player::getPlayerLive() const {
     return HP;
 }
 
-// int Player::getBombCount() const {
-//    return bombcount;
-// }
-
 bool Player::checkGround(double x, double y) {
     int margin = 14; 
     
