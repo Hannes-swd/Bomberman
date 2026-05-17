@@ -42,88 +42,38 @@ void drawSmokeBomb() {
 
 void drawSmokeClouds() {
     double now = GetTime();
-    
+
     for (const auto& cloud : smokeCloudList) {
         float elapsed = (float)(now - cloud.startTime);
-        float remaining = (float)(cloud.duration - elapsed);
-        
-        if (remaining > 0) {
-            // Intensität des Rauchs (am Anfang stärker)
-            float intensity = (remaining / (float)cloud.duration);
-            
-            // Rauchfarbe: Dunkelgrau bis Hellgrau
-            Color smokeColor;
-            smokeColor.r = 80;
-            smokeColor.g = 80;
-            smokeColor.b = 80;
-            smokeColor.a = (unsigned char)(220 * intensity);
-            
-            // Rauchbereich - 3x3 Grid Bereich (wie bei Explosion)
-            for (int offsetX = -2; offsetX <= 2; offsetX++) {
-                for (int offsetY = -2; offsetY <= 2; offsetY++) {
+
+        if (elapsed < cloud.duration) {
+
+            // Fade-Out
+            float intensity = 1.0f - (elapsed / cloud.duration);
+
+            Color smokeColor = {
+                20,
+                20,
+                20,
+                245
+            };
+
+            // 5x5 Bereich
+            for (int offsetX = -4; offsetX <= 4; offsetX++) {
+                for (int offsetY = -4; offsetY <= 4; offsetY++) {
+
                     int currentX = cloud.posx + (offsetX * 32);
                     int currentY = cloud.posy + (offsetY * 32);
-                    
-                    // Wackeleffekt für den Rauch
-                    float wobbleX = (float)(sin(now * 2.0f + offsetX) * 3.0f);
-                    float wobbleY = (float)(cos(now * 2.0f + offsetY) * 3.0f);
-                    
-                    // Rauchintensität für Randbereiche reduzieren
-                    float cellIntensity = intensity;
-                    if (abs(offsetX) == 2 && abs(offsetY) == 2) {
-                        cellIntensity = intensity * 0.7f;  // Ecken etwas schwächer
-                    } else if (abs(offsetX) == 2 || abs(offsetY) == 2) {
-                        cellIntensity = intensity * 0.85f; // Seiten etwas schwächer
-                    }
-                    
-                    Color cellColor;
-                    cellColor.r = 80;
-                    cellColor.g = 80;
-                    cellColor.b = 80;
-                    cellColor.a = (unsigned char)(220 * cellIntensity);
-                    
-                    // Zeichne quadratischen Rauch (wie Explosion)
+
                     DrawRectangle(
-                        currentX + (int)wobbleX,
-                        currentY + (int)wobbleY,
-                        32, 32,
-                        cellColor
+                        currentX,
+                        currentY,
+                        32,
+                        32,
+                        smokeColor
                     );
-                    
-                    // Zweite Schicht für mehr Deckung
-                    if (cellIntensity > 0.5f) {
-                        Color darkColor;
-                        darkColor.r = 50;
-                        darkColor.g = 50;
-                        darkColor.b = 50;
-                        darkColor.a = (unsigned char)(180 * cellIntensity);
-                        
-                        DrawRectangle(
-                            currentX + (int)(wobbleX * 0.5f) + 4,
-                            currentY + (int)(wobbleY * 0.5f) + 4,
-                            24, 24,
-                            darkColor
-                        );
-                    }
                 }
             }
-            
-            // Zusätzliche Deckung für das Zentrum
-            Color centerColor;
-            centerColor.r = 60;
-            centerColor.g = 60;
-            centerColor.b = 60;
-            centerColor.a = (unsigned char)(250 * intensity);
-            
-            float wobbleX = (float)(sin(now * 3.0f) * 3.0f);
-            float wobbleY = (float)(cos(now * 2.5f) * 3.0f);
-            
-            DrawRectangle(
-                cloud.posx + (int)wobbleX,
-                cloud.posy + (int)wobbleY,
-                32, 32,
-                centerColor
-            );
         }
     }
 }
@@ -147,7 +97,7 @@ void explodeSmokeBomb(Player* owner) {
             newCloud.posx = bomb.posx;
             newCloud.posy = bomb.posy;
             newCloud.startTime = GetTime();
-            newCloud.duration = 5.0f;
+            newCloud.duration = 15.0f;
             smokeCloudList.push_back(newCloud);
         }
     }
@@ -170,7 +120,7 @@ void updateAllSmokes() {
             newCloud.posx = bomb.posx;
             newCloud.posy = bomb.posy;
             newCloud.startTime = GetTime();
-            newCloud.duration = 5.0f;
+            newCloud.duration = 15.0f;
             smokeCloudList.push_back(newCloud);
             
             bomb.explosionTime = 0;
